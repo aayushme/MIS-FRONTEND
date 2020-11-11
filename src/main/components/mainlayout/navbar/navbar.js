@@ -184,7 +184,7 @@ class Sidebar extends Component  {
 const mapStateToProps = state =>{
     return{
       name : state.auth.name= "AAYUSH",
-      designation : state.auth.designation = "MIS"
+      designation : state.auth.designation
     }
   }
 
