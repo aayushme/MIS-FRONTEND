@@ -1,0 +1,36 @@
+.input {
+  width: 100%;
+  display: block;
+}
+.button {
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background-image: linear-gradient(to right, #5d4fff, #48b5e8);
+  border: 0;
+  color: #ffffff;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+.redlabel {
+  color: red;
+  font-size: 13px;
+  margin-bottom: 1rem;
+}
+
+.errormessage {
+  font-size: 20px;
+  padding: 30px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 700;
+  color: red;
+}
+
+.button:hover,
+.button:active,
+.button:focus {
+  background-image: linear-gradient(to right, goldenrod, yellow);
+}
