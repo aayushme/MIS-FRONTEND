@@ -36,21 +36,3 @@
     transform: rotate(360deg);
   }
 }
-
-/* Header
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-.topnav {
-  position: fixed;
-  top:0;
-  background-color: #242e42;
-  width: 100%;
-}
-
-.topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}

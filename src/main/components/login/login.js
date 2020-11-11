@@ -44,7 +44,7 @@ class Login extends Component{
     }
     let authRedirect = null;
     if(this.props.isAuthenticated){
-      authRedirect = <Redirect to='/main'/>
+      authRedirect = <Redirect to='/main/dashboard'/>
     }
 
 
