@@ -12,6 +12,7 @@ class Header extends Component{
     this.props.onLogout();
     return <Redirect to="/"/>
   }
+
 render(){
     return(
         

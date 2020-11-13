@@ -14,7 +14,8 @@ class Login extends Component{
   state={
     user_name:'',
     pwd:'',
-    validator_pass:null
+    validator_pass:null,
+    show1:true
   }
 
   handleLogin = (e) =>{
@@ -32,16 +33,18 @@ class Login extends Component{
     
   }
 
+  handleModalClose=(e)=>{
+    e.preventDefault();
+    this.setState({show1:false})
+    
+  }
+
  
   
 
 
   render(){
 
-    let error_message = null;
-    if(this.props.error){
-      error_message= <p>{this.props.error.message}</p>
-    }
     let authRedirect = null;
     if(this.props.isAuthenticated){
       authRedirect = <Redirect to='/main/dashboard'/>
@@ -56,9 +59,10 @@ class Login extends Component{
 
       
 <div className="logincont">
+<Modal show={this.props.showmodal && this.state.show1} onClick={(e)=>this.handleModalClose(e)} message="Wrong Username/Pwd" />
   <div className="form">
   {authRedirect}
-  <Modal/>
+  
             <form onSubmit={this.handleLogin}>
               <Input
                 inputType="input"              
@@ -79,7 +83,7 @@ class Login extends Component{
                 value={this.state.pwd}
               />
               <Button value_name="Login" />
-              {error_message}
+              
               
               
             </form>
@@ -104,7 +108,8 @@ const mapStateToProps = state =>{
   return{
     token : state.auth.token,
     error : state.auth.error,
-    isAuthenticated : state.auth.token !==null
+    isAuthenticated : state.auth.token !==null,
+    showmodal:state.auth.error!==null
   }
 }
 

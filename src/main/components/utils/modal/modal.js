@@ -1,35 +1,31 @@
-import React,{Component} from 'react';
+import React from 'react';
 import {Modal} from 'react-bootstrap'
-import {connect} from 'react-redux'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faLock } from '@fortawesome/free-solid-svg-icons'
+import Button from "../form/button"
 
-class modal extends Component{
 
-  handleClose = ()=>{
-    
-  }
-    render(){
-      let show_is = this.props.isAuthenticated;
+function modal(props){
+
 
     return(
       <>
 
-        <Modal show={show_is} onHide={this.handleClose()}>
-        <Modal.Header closeButton>
-        <Modal.Title><h1 >{this.props.error}</h1></Modal.Title>
+        <Modal {...props} >
+        <Modal.Header closeButton  className="alert-danger">
+        <Modal.Title><h4 className="lead">{props.message}<FontAwesomeIcon icon={faLock}></FontAwesomeIcon></h4></Modal.Title>
         </Modal.Header>
+        {(props.confirm)?<Modal.Body className="alert-primary">
+        <h4 className="lead">{props.confirm}</h4>
+        <Button value_name = {props.button_message} />
+        </Modal.Body>:<></>}
         
       </Modal>
       </>
     );
 }
-}
-const mapStateToProps = state =>{
-  return{
-    token : state.auth.token,
-    error : state.auth.error,
-    isAuthenticated : state.auth.error !== null
-  }
-}
 
 
-export default connect(mapStateToProps)(modal);
+
+
+export default (modal);

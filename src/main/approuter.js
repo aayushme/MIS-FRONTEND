@@ -3,6 +3,10 @@ import Login from "./components/login/login";
 import Upload from "./components/mainlayout/upload/upload"
 import Report from "./components/mainlayout/report/report"
 import Dashboard from "./components/mainlayout/dashboard/dashboard"
+import DisputedCenters from "./components/mainlayout/disputedcenter/disputedcenter"
+import Mock from "./components/mainlayout/mockstatus/mockstatus"
+import New from "./components/mainlayout/newallocations/newallocations"
+import ProjectDetails from "./components/mainlayout/projectdetail/projectdetail"
 import "./components/mainlayout/main.css"
 import {connect} from 'react-redux';
 import * as actions from "./store/actions/index"
@@ -10,6 +14,7 @@ import * as actions from "./store/actions/index"
 
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 
 class AppRouter extends Component {
   componentDidMount(){
@@ -29,6 +34,11 @@ class AppRouter extends Component {
         <Route path="/main/dashboard" exact component={Dashboard} />
         <Route path="/main/upload" exact component={Upload} />
         <Route path="/main/report" exact component={Report} />
+        <Route path="/main/disputedcenter" exact component={DisputedCenters} />
+        <Route path="/main/mock" exact component={Mock} />
+        <Route path="/main/newallocations" exact component={New} />
+        <Route path="/main/projectdetails" exact component={ProjectDetails} />
+
       </div>
     </Switch>
     }

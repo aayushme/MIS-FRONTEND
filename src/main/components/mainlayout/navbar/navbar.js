@@ -22,24 +22,24 @@ class Sidebar extends Component  {
           case("ZM"):
           main_view=<ul class="nav flex-column bg-white mb-0">
            <List to="/main/dashboard" link_name = "Dashboard" icon_name = "faSignal"/>
-           <List to="/main/dashboard" link_name = "New Allocations" icon_name = "faPlus"/>
-           <List to="/main/dashboard" link_name = "Project Details" icon_name = "faInfo"/>
-           <List to="/main/dashboard" link_name = "Disputed Centres" icon_name = "faThumbsDown"/>
+           <List to="/main/newallocations" link_name = "New Allocations" icon_name = "faPlus"/>
+           <List to="/main/projectdetails" link_name = "Project Details" icon_name = "faInfo"/>
+           <List to="/main/disputedcenter" link_name = "Disputed Centres" icon_name = "faThumbsDown"/>
            <List to="/main/dashboard" link_name = "QC Status" icon_name = "faCogs"/>
-           <List to="/main/dashboard" link_name = "MOCK Status" icon_name = "faSignal"/>
-           <List to="/main/dashboard" link_name = "Reports" icon_name = "faNewspaper"/>
+           <List to="/main/mock" link_name = "MOCK Status" icon_name = "faSignal"/>
+           <List to="/main/report" link_name = "Reports" icon_name = "faNewspaper"/>
         </ul>
           break;
           
           case("PM"):
           main_view=<ul class="nav flex-column bg-white mb-0 hover_prop">
       <List to="/main/dashboard" link_name = "Dashboard" icon_name = "faSignal"/>
-           <List to="/main/dashboard" link_name = "New Allocations" icon_name = "faPlus"/>
-           <List to="/main/dashboard" link_name = "Project Details" icon_name = "faInfo"/>
-           <List to="/main/dashboard" link_name = "Disputed Centres" icon_name = "faThumbsDown"/>
+           <List to="/main/newallocations" link_name = "New Allocations" icon_name = "faPlus"/>
+           <List to="/main/projectdetails" link_name = "Project Details" icon_name = "faInfo"/>
+           <List to="/main/disputedcenter" link_name = "Disputed Centres" icon_name = "faThumbsDown"/>
            <List to="/main/dashboard" link_name = "QC Status" icon_name = "faCogs"/>
-           <List to="/main/dashboard" link_name = "MOCK Status" icon_name = "faSignal"/>
-           <List to="/main/dashboard" link_name = "Reports" icon_name = "faNewspaper"/>
+           <List to="/main/mock" link_name = "MOCK Status" icon_name = "faSignal"/>
+           <List to="/main/report" link_name = "Reports" icon_name = "faNewspaper"/>
         </ul>
           break;
           default:
