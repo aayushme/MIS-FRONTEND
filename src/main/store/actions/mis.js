@@ -1,15 +1,20 @@
 import * as actionTypes from './actionsTypes'
 import axios from 'axios'
 
-export const misUploadSuccess = (tokenId,designationId,full_nameId) =>{
+export const misUploadSuccess = (statusIs) =>{
     return {
         type :actionTypes.MIS_UPLOAD_SHEET_SUCCESS,
-        token : tokenId,
-        designation : designationId,
-        name : full_nameId
+        status:statusIs
 
     }
 }
+export const misGetSuccess = (dataT) =>{
+  return {
+      type :actionTypes.MIS_GET_SUCCESS,
+      data:dataT
+  }
+}
+
 
 export const misUploadFail = (error) =>{
     return {
@@ -17,26 +22,31 @@ export const misUploadFail = (error) =>{
         error : error
     }
 }
+export const misGetFail = (error) =>{
+  return {
+      type : actionTypes.MIS_GET_ERROR,
+      error : error
+  }
+}
 
 export const misUpload = (token,excel_file) =>{
     return dispatch =>{
         
-    let data_upload = {
-        'file' : excel_file
-    }
+    const data = new FormData(); 
+    data.append('file', excel_file)
+    console.log(excel_file);
     let axiosConfig = {
       headers: {
         'Content-Type': 'application/json;charset=UTF-8',
-        'Authorization': 'Bearer '+token
     }
     };
 
     axios
-      .post("https://mis2020.herokuapp.com/api/excel/",data_upload,axiosConfig
+      .post("https://mis2020.herokuapp.com/api/mis/excel/",data,axiosConfig
       )
       .then((res) => {
-        console.log("RESPONSE RECEIVED: ", res);
-        dispatch(misUploadSuccess(res.data.token,res.data.designation,res.data.full_name));
+        console.log("RESPONSE RECEIVED: ", res.data);
+        dispatch(misUploadSuccess(res.data.name));
         
       })
       .catch((err) => {
@@ -52,16 +62,15 @@ export const misGet = (token) =>{
     let axiosConfig = {
       headers: {
         'Content-Type': 'application/json;charset=UTF-8',
-        'Authorization': 'Bearer '+token
     }
     };
 
     axios
-      .post("https://mis2020.herokuapp.com/api/excel/",data_upload,axiosConfig
+      .get("https://mis2020.herokuapp.com/api/mis/excel/",axiosConfig
       )
       .then((res) => {
-        console.log("RESPONSE RECEIVED: ", res);
-        dispatch(misUploadSuccess(res.data.token,res.data.designation,res.data.full_name));
+        console.log("RESPONSE RECEIVED: ", res.data);
+        dispatch(misGetSuccess(res.data));
         
       })
       .catch((err) => {

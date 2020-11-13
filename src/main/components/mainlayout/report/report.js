@@ -6,7 +6,7 @@ import Navbar from "../navbar/navbar"
 function Report(){
     return(
         
-<div className="container_absolute">
+<>
 
 <Header/>
     <div>
@@ -15,22 +15,22 @@ function Report(){
     
       <div class="vertical-nav bg-white" id="sidebar">
   <Navbar/>
-
- 
 </div>
 
-<div class="page-content p-5" id="content">
+<div class="page-content" id="content">
+  <div className="jumbotron overflow-cont">
+
+    
+
+  </div>
  
-  
- 
-  <h2 class="display-4 text-white">Reports</h2>
  
  
 
 </div>
 
     </div>
-    </div>
+    </>
     );
 }
 

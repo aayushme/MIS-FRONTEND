@@ -1,24 +1,34 @@
 import React,{Component} from 'react'
 import {connect} from 'react-redux';
+import Navbar from "../navbar/navbar"
+import Header from "../header/header"
 
 class Dashboard extends Component{
     render(){
         return(
             <>
-            <section class="grid">
-        <article>This is {this.props.designation}</article>
-    <article></article>
-    <article></article>
-    <article></article>
-    <article></article>
-    <article></article>
-    <article></article>
-    <article></article>
-  </section>
-  <footer class="page-footer">
-    <small>Made with <span>❤</span> by <a href="http://georgemartsoukos.com/" target="_blank">George Martsoukos</a>
-    </small>
-  </footer></>
+            <div classNameName="container_absolute">
+
+<Header/>
+    <div>    
+      <br/>
+      <div className="vertical-nav bg-white" id="sidebar">
+  <Navbar/>
+</div>
+
+<div className="page-content" id="content">
+<div className="jumbotron overflow-cont">
+
+    
+
+  </div>
+
+</div>
+
+    </div>
+    </div>
+    
+   </>
         );
     }
 }

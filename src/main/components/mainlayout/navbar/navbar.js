@@ -1,9 +1,7 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCogs, faThumbsDown, faNewspaper, faPlus,faFile,faInfo,faSignal } from '@fortawesome/free-solid-svg-icons'
 import "./navbar.css"
-import {Link} from 'react-router-dom'
+import List from "../../utils/list/list"
 
 
 
@@ -16,146 +14,43 @@ class Sidebar extends Component  {
         switch(this.props.designation ){
             case("MIS"):
             main_view =<ul class="nav flex-column bg-white mb-0">
-            <li class="nav-item">
-              <Link to="/main/dashboard" class="nav-link text-dark fonts_are" >
-                        <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
-                        <FontAwesomeIcon className = "icons_nav" icon={faSignal}/>Dashboard
-                    </Link>
-            </li>
-            <li class="nav-item">
-              <Link to="/main/upload" class="nav-link text-dark fonts_are" >
-                        <i class="fa fa-address-card mr-3 text-primary fa-fw"></i>
-                        <FontAwesomeIcon className = "icons_nav" icon={faNewspaper}/>Upload Sheet
-                    </Link>
-            </li>
-            <li class="nav-item">
-              <Link to="/main/report" class="nav-link text-dark fonts_are ">
-                        <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
-                        <FontAwesomeIcon className = "icons_nav" icon={faFile}/>Reports
-                    </Link>
-            </li>
-           
+            <List to="/main/dashboard" link_name = "Dashboard" icon_name = "faSignal"/>
+            <List to="/main/upload" link_name = "Upload Sheet" icon_name = "faNewspaper"/>
+            <List to="/main/report" link_name = "Reports" icon_name = "faFile"/>   
           </ul>
           break;
           case("ZM"):
           main_view=<ul class="nav flex-column bg-white mb-0">
-          <li class="nav-item">
-            <Link to="/main/dashboard" class="nav-link text-dark fonts_are">
-                      <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
-                      <FontAwesomeIcon className = "icons_nav" icon={faSignal}/> Dashboard
-                  </Link>
-          </li>
-          <li class="nav-item">
-            <a to="/main/dashboard" class="nav-link text-dark fonts_are">
-                      <i class="fa fa-address-card mr-3 text-primary fa-fw"></i>
-                      <FontAwesomeIcon className = "icons_nav" icon={faPlus}/>New Allocations
-                  </a>
-          </li>
-          <li class="nav-item">
-            <Link to="/main/dashboard" class="nav-link text-dark fonts_are">
-                      <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
-                      <FontAwesomeIcon className = "icons_nav" icon={faInfo}/>Project Details
-                  </Link>
-          </li>
-          <li class="nav-item">
-            <Link to="/main/dashboard" class="nav-link text-dark fonts_are">
-                      <i class="fa fa-picture-o mr-3 text-primary fa-fw"></i>
-                      <FontAwesomeIcon className = "icons_nav" icon={faThumbsDown}/>Disputed Centres
-                  </Link>
-          </li>
-          <li class="nav-item">
-            <Link to="/main/dashboard" class="nav-link text-dark fonts_are">
-                      <i class="fa fa-picture-o mr-3 text-primary fa-fw"></i>
-                      <FontAwesomeIcon className = "icons_nav" icon={faCogs}/>QC Status
-                  </Link>
-          </li>
-          <li class="nav-item">
-            <Link to="/main/dashboard" class="nav-link text-dark fonts_are">
-                      <i class="fa fa-picture-o mr-3 text-primary fa-fw"></i>
-                      <FontAwesomeIcon className = "icons_nav" icon={faSignal}/>MOCK Status
-                  </Link>
-          </li>
-          <li class="nav-item">
-            <Link to="/main/dashboard" class="nav-link text-dark fonts_are">
-                      <i class="fa fa-picture-o mr-3 text-primary fa-fw"></i>
-                      <FontAwesomeIcon className = "icons_nav" icon={faNewspaper}/>Reports
-                  </Link>
-          </li>
+           <List to="/main/dashboard" link_name = "Dashboard" icon_name = "faSignal"/>
+           <List to="/main/dashboard" link_name = "New Allocations" icon_name = "faPlus"/>
+           <List to="/main/dashboard" link_name = "Project Details" icon_name = "faInfo"/>
+           <List to="/main/dashboard" link_name = "Disputed Centres" icon_name = "faThumbsDown"/>
+           <List to="/main/dashboard" link_name = "QC Status" icon_name = "faCogs"/>
+           <List to="/main/dashboard" link_name = "MOCK Status" icon_name = "faSignal"/>
+           <List to="/main/dashboard" link_name = "Reports" icon_name = "faNewspaper"/>
         </ul>
           break;
           
           case("PM"):
           main_view=<ul class="nav flex-column bg-white mb-0 hover_prop">
-      <li class="nav-item">
-            <Link to="/main/dashboard" class="nav-link text-dark fonts_are">
-                      <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
-                      <FontAwesomeIcon className = "icons_nav" icon={faSignal}/>Dashboard
-                  </Link>
-          </li>
-          <li class="nav-item">
-            <Link to="/main/dashboard" class="nav-link text-dark fonts_are">
-                      <i class="fa fa-address-card mr-3 text-primary fa-fw"></i>
-                      <FontAwesomeIcon className = "icons_nav" icon={faPlus}/>New Allocations
-                  </Link>
-          </li>
-          <li class="nav-item">
-            <Link to="/main/dashboard" class="nav-link text-dark fonts_are">
-                      <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
-                      <FontAwesomeIcon className = "icons_nav" icon={faInfo}/>Project Details
-                  </Link>
-          </li>
-          <li class="nav-item">
-            <Link to="/main/dashboard" class="nav-link text-dark fonts_are">
-                      <i class="fa fa-picture-o mr-3 text-primary fa-fw"></i>
-                      <FontAwesomeIcon className = "icons_nav" icon={faThumbsDown}/>Disputed Centres
-                  </Link>
-          </li>
-          <li class="nav-item">
-            <Link to="/main/dashboard" class="nav-link text-dark fonts_are">
-                      <i class="fa fa-picture-o mr-3 text-primary fa-fw"></i>
-                      <FontAwesomeIcon className = "icons_nav" icon={faCogs}/>QC Status
-                  </Link>
-          </li>
-          <li class="nav-item">
-            <Link to="/main/dashboard" class="nav-link text-dark fonts_are">
-                      <i class="fa fa-picture-o mr-3 text-primary fa-fw"></i>
-                      <FontAwesomeIcon className = "icons_nav" icon={faSignal}/>MOCK Status
-                  </Link>
-          </li>
-          <li class="nav-item">
-            <Link to="/main/dashboard" class="nav-link text-dark fonts_are">
-                      <i class="fa fa-picture-o mr-3 text-primary fa-fw"></i>
-                      <FontAwesomeIcon className = "icons_nav" icon={faNewspaper}/>Reports
-                  </Link>
-          </li>
+      <List to="/main/dashboard" link_name = "Dashboard" icon_name = "faSignal"/>
+           <List to="/main/dashboard" link_name = "New Allocations" icon_name = "faPlus"/>
+           <List to="/main/dashboard" link_name = "Project Details" icon_name = "faInfo"/>
+           <List to="/main/dashboard" link_name = "Disputed Centres" icon_name = "faThumbsDown"/>
+           <List to="/main/dashboard" link_name = "QC Status" icon_name = "faCogs"/>
+           <List to="/main/dashboard" link_name = "MOCK Status" icon_name = "faSignal"/>
+           <List to="/main/dashboard" link_name = "Reports" icon_name = "faNewspaper"/>
         </ul>
           break;
           default:
               main_view=<ul class="nav flex-column bg-white mb-0">
-              <li class="nav-item">
-                <Link to="/main/dashboard" class="nav-link text-dark fonts_are">
-                          <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
-                          <FontAwesomeIcon className = "icons_nav" icon={faSignal}/>Dashboard
-                      </Link>
-              </li>
-              <li class="nav-item">
-                <Link to="/main/dashboard" class="nav-link text-dark fonts_are">
-                          <i class="fa fa-address-card mr-3 text-primary fa-fw"></i>
-                          <FontAwesomeIcon className = "icons_nav" icon={faSignal}/>About
-                      </Link>
-              </li>
-              <li class="nav-item">
-                <Link to="/main/dashboard" class="nav-link text-dark fonts_are">
-                          <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
-                          <FontAwesomeIcon className = "icons_nav" icon={faSignal}/>Services
-                      </Link>
-              </li>
-              <li class="nav-item">
-                <Link to="/main/dashboard" class="nav-link text-dark fonts_are">
-                          <i class="fa fa-picture-o mr-3 text-primary fa-fw"></i>
-                          <FontAwesomeIcon className = "icons_nav" icon={faSignal}/>Gallery
-                      </Link>
-              </li>
+               <List to="/main/dashboard" link_name = "Dashboard" icon_name = "faSignal"/>
+           <List to="/main/dashboard" link_name = "New Allocations" icon_name = "faPlus"/>
+           <List to="/main/dashboard" link_name = "Project Details" icon_name = "faInfo"/>
+           <List to="/main/dashboard" link_name = "Disputed Centres" icon_name = "faThumbsDown"/>
+           <List to="/main/dashboard" link_name = "QC Status" icon_name = "faCogs"/>
+           <List to="/main/dashboard" link_name = "MOCK Status" icon_name = "faSignal"/>
+           <List to="/main/dashboard" link_name = "Reports" icon_name = "faNewspaper"/>
             </ul>
 
         }
@@ -190,7 +85,7 @@ class Sidebar extends Component  {
 const mapStateToProps = state =>{
     return{
       name : state.auth.name= "Aayush",
-      designation : state.auth.designation
+      designation : state.auth.designation = "MIS"
     }
   }
 

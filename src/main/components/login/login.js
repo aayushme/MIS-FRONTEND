@@ -78,7 +78,7 @@ class Login extends Component{
                 onChange={(e) => this.setState({pwd:e.target.value})}
                 value={this.state.pwd}
               />
-              <Button value="Login" />
+              <Button value_name="Login" />
               {error_message}
               
               

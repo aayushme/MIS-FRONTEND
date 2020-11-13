@@ -5,7 +5,7 @@ const Button = (props)=>{
 
     return(
         <div >
-            <button className="button" {...props}> {props.value} </button>
+            <button className="button" {...props}> {props.value_name} </button>
 
         </div>
     )

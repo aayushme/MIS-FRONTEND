@@ -1,0 +1,56 @@
+.upload_button{
+        width: 100%;
+        border: 0;
+        padding: 15px;
+        font-size: 16px;
+        background-color: #3f51b5;
+        color: white;
+        border-radius: 4px;
+}
+
+
+.error_button{
+    padding: 8px;
+    background-color: red;
+    color:white;
+    font-size: 15px;
+    border-radius: 5px;
+    
+}
+.border1{
+    overflow-y: scroll;
+    max-height: 20rem;
+}
+
+.error_div{
+    overflow-y: scroll;
+    max-height: 15rem;
+    margin-left: 0rem;
+}
+.overflow_cont{
+    min-height: 93vh;
+    margin-bottom: 0rem;
+    margin-top: -0.5rem;
+    overflow-y: hidden;
+}
+
+
+.vertical-nav {
+    min-width: 17rem;
+    width: 17rem;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    margin-top: 3.8rem;
+    left: 0;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s;
+  }
+  
+  #content{
+    padding: 0px 5px 0px 10px;
+    width: 81.7%;
+    margin-left: 18%;
+    margin-top: 2.3%;
+    overflow-y: hidden;
+  }
