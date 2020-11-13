@@ -19,3 +19,7 @@ export{
   getCountByMock,
   getCountByQC
 }from './graphs'
+
+export{
+    getProjectDetails
+}from "./project"

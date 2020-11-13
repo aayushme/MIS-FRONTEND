@@ -35,11 +35,11 @@ class Dashboard extends Component{
 
   <div className="row">
     <div className="col-sm-6">
-    <Graphs jsonData="" captions="" /> 
+    <Graphs jsonData={this.props.count_by_center_data} /> 
   </div>
 
   <div className="col-sm-6">
-    <Graphs jsonData="" captions="" /> 
+    <Graphs jsonData={this.props.count_by_mock_data} /> 
   </div>
   </div>
   <br/>
@@ -48,12 +48,12 @@ class Dashboard extends Component{
 
   <div className="row ">
   <div className="col-sm-6">
-    <Graphs jsonData="" captions="" /> 
+    <Graphs jsonData={this.props.count_by_installation_data} /> 
   </div>
   
 
   <div className="col-sm-6">
-    <Graphs jsonData="" captions="" /> 
+    <Graphs jsonData={this.props.count_by_qc_data} /> 
     </div>
 
   </div>
@@ -81,9 +81,13 @@ const mapDispatchToProps = dispatch =>{
 
 const mapStateToProps = state =>{
     return{
-      name : state.auth.name= "AAYUSH",
+      name : state.auth.name,
       designation : state.auth.designation,
       token : state.auth.token,
+      count_by_center_data:state.graph.count_by_center_data,
+      count_by_installation_data:state.graph.count_by_installation_data,
+      count_by_qc_data:state.graph.count_by_qc_data,
+      count_by_mock_data:state.graph.count_by_mock_data
     }
   }
 

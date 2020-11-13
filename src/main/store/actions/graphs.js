@@ -75,11 +75,11 @@ export const countByInstallationSuccess = (dataT) =>{
         )
         .then((res) => {
           console.log("RESPONSE RECEIVED: ", res);
-          dispatch(countByCenterSuccess(res.data));
+          dispatch(countByInstallationSuccess(res.data));
           
         })
         .catch((err) => {
-          dispatch(countByCenterFail(err));
+          dispatch(countByInstallationFail(err));
         })
   
       }
@@ -117,11 +117,11 @@ export const countByQCSuccess = (dataT) =>{
         )
         .then((res) => {
           console.log("RESPONSE RECEIVED: ", res);
-          dispatch(countByCenterSuccess(res.data));
+          dispatch(countByQCSuccess(res.data));
           
         })
         .catch((err) => {
-          dispatch(countByCenterFail(err));
+          dispatch(countByQCFail(err));
         })
   
       }
@@ -129,42 +129,42 @@ export const countByQCSuccess = (dataT) =>{
 
 /*================Get Count By Mock Status=====================*/
 
-export const countByMOckSuccess = (dataT) =>{
-    return {
-        type :actionTypes.GET_GRAPH_COUNT_BY_MOCK_SUCCESS,
-        count_by_mock_data:dataT
+export const countByMockSuccess = (dataT) =>{
+  return {
+      type :actionTypes.GET_GRAPH_COUNT_BY_MOCK_SUCCESS,
+      count_by_mock_data:dataT
+  }
+}
+
+export const countByMockFail = (error) =>{
+  return {
+      type : actionTypes.GET_GRAPH_COUNT_BY_MOCK_ERROR,
+      error : error
+  }
+}
+
+
+
+export const getCountByMock = (token) =>{
+    return dispatch =>{
+        
+    let axiosConfig = {
+      headers: {
+        'Content-Type': 'application/json;charset=UTF-8'
     }
-  }
-  
-  export const countByMOckFail = (error) =>{
-    return {
-        type : actionTypes.GET_GRAPH_COUNT_BY_MOCK_ERROR,
-        error : error
+    };
+
+    axios
+      .get("https://mis2020.herokuapp.com/api/mis/count-by-mock-status/",axiosConfig
+      )
+      .then((res) => {
+        console.log("RESPONSE RECEIVED: ", res);
+        dispatch(countByMockSuccess(res.data));
+        
+      })
+      .catch((err) => {
+        dispatch(countByMockFail(err));
+      })
+
     }
-  }
-  
-  
-  
-  export const getCountByMock = (token) =>{
-      return dispatch =>{
-          
-      let axiosConfig = {
-        headers: {
-          'Content-Type': 'application/json;charset=UTF-8'
-      }
-      };
-  
-      axios
-        .get("https://mis2020.herokuapp.com/api/mis/count-by-mock-status/",axiosConfig
-        )
-        .then((res) => {
-          console.log("RESPONSE RECEIVED: ", res);
-          dispatch(countByCenterSuccess(res.data));
-          
-        })
-        .catch((err) => {
-          dispatch(countByCenterFail(err));
-        })
-  
-      }
-  }
+}

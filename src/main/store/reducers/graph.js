@@ -3,10 +3,10 @@ import { updateObject } from '../utility';
 
 
 const initialState = {
-    count_by_center_data:[],
-    count_by_installation_data:[],
-    count_by_qc_data:[],
-    count_by_mock_data:[],
+    count_by_center_data:'',
+    count_by_installation_data:'',
+    count_by_qc_data:'',
+    count_by_mock_data:'',
     error:null
 };
 
