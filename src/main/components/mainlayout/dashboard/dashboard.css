@@ -1,0 +1,11 @@
+.graph-cont{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 80vh;
+}
+
+.center-class{
+    display: block;
+    margin-left: 2rem;
+    
+}

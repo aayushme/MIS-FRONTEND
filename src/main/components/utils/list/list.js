@@ -30,6 +30,7 @@ const List = (props)=>{
         break;
         case(null):
         iconName=null;
+        break;
         default:
             iconName=props.icon_name;
         

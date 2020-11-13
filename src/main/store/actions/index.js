@@ -12,3 +12,10 @@ export{
 export{
     getMisError
 }from './miserror'
+
+export{
+  getCountByCenter,
+  getCountByInstallation,
+  getCountByMock,
+  getCountByQC
+}from './graphs'

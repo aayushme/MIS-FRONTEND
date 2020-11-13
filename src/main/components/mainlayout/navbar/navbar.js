@@ -63,7 +63,7 @@ class Sidebar extends Component  {
   <div class="py-4 px-3 mb-4 bg-light">
     <div class="media d-flex align-items-center"><img src="https://res.cloudinary.com/mhmd/image/upload/v1556074849/avatar-1_tcnd60.png" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm"/>
       <div class="media-body">
-    <h4 class="m-0">{this.props.name}</h4>
+    <h4 class="m-0">{(this.props.name)?this.props.name:"Aayush Tyagi"}</h4>
     <p class="font-weight-light text-muted mb-0">{this.props.designation} User</p>
       </div>
     </div>
@@ -84,8 +84,8 @@ class Sidebar extends Component  {
 
 const mapStateToProps = state =>{
     return{
-      name : state.auth.name= "Aayush",
-      designation : state.auth.designation = "MIS"
+      name : state.auth.name,
+      designation : state.auth.designation
     }
   }
 

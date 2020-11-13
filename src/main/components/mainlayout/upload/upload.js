@@ -38,7 +38,7 @@ class Upload extends Component{
 
   renderTable = () => {
     return this.props.data.map(value => {
-      let value_button=value.id;
+      
         return (
           
           
