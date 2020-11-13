@@ -52,7 +52,6 @@ render(){
 
 <div class="page-content" id="content">
   <div className="jumbotron overflow-cont">
-<h1 className="lead">ProjectDetail</h1>
 <div className="project_table_div">
 <Table striped bordered hover>
     <thead>
