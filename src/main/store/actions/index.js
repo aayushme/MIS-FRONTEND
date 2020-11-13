@@ -21,5 +21,7 @@ export{
 }from './graphs'
 
 export{
-    getProjectDetails
+    getProjectDetails,
+    getZM,
+    getPM
 }from "./project"

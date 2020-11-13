@@ -3,6 +3,7 @@ import Header from '../header/header'
 import Navbar from "../navbar/navbar"
 import {connect} from 'react-redux';
 import {Table} from "react-bootstrap"
+import CustomDropdown from "../../utils/form/dropdown"
 import "./project.css"
 import * as actions from "../../../store/actions/index"
 
@@ -11,6 +12,8 @@ class ProjectDetail extends Component{
 
   componentDidMount(){
 this.props.getProjectDetails(this.props.token,'1');
+this.props.getPM(this.props.token);
+        this.props.getZM(this.props.token);
   }
 
   renderTable = () => {
@@ -27,6 +30,7 @@ this.props.getProjectDetails(this.props.token,'1');
            <td>{value.zone}</td>
            <td>{value.state}</td>
            <td>{value.city}</td>
+           <td><CustomDropdown/></td>
             </tr>
             
           </tbody>
@@ -63,6 +67,7 @@ render(){
               <th>Zone</th>
               <th>State</th>
               <th>City</th>
+              <th>Select</th>
             </tr>
           </thead>
           {this.renderTable()}
@@ -88,6 +93,8 @@ render(){
 const mapDispatchToProps = dispatch =>{
   return {
     getProjectDetails: (token,id) =>  dispatch(actions.getProjectDetails(token,id)),
+    getZM: (token) =>  dispatch(actions.getZM(token)),
+    getPM: (token) => dispatch(actions.getPM(token)),
     
   }
 }

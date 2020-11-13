@@ -1,5 +1,6 @@
 .project_table_div{
     overflow-y: scroll;
     height: 85vh;
-    margin-top: 3rem;
+    margin-top: -2rem;
+    overflow-x: hidden;
 }
