@@ -36,7 +36,7 @@ class ProjectDetail extends Component{
             <tr>  
            <td>{value.id}</td>
            <td>{value.code}</td>
-           <td>{value.pm}</td>
+           {this.props.designation==='PC'?<td>{value.zm}</td>:<td>{value.pc}</td>}
            <td>{value.zone}</td>
            <td>{value.state}</td>
            <td>{value.city}</td>
@@ -73,7 +73,7 @@ render(){
               
               <th>S.No.</th>
               <th>Project Code</th>
-              <th>ZM</th>
+              {this.props.designation==='PC'?<th>ZM</th>:<th>PC</th>}
               <th>Zone</th>
               <th>State</th>
               <th>City</th>
