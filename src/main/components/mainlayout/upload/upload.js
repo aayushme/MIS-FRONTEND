@@ -13,24 +13,23 @@ import {connect} from 'react-redux'
 class Upload extends Component{
 
   componentDidMount(){
-    this.props.misGet(this.state.token);
+    this.props.misGet(this.props.token);
 
   }
    
     state = {
         file:'',
-        token:null
     }
 
 
 
   onThisSubmit = (e)=>{
     e.preventDefault();
-    this.props.misUpload(this.state.token,this.state.file);
+    this.props.misUpload(this.props.token,this.state.file);
   }
 
   handleError = (id) => {
-    this.props.getMisError(this.state.token,id);
+    this.props.getMisError(this.props.token,id);
     console.log(id);
   }
 
@@ -161,7 +160,8 @@ return{
   data:state.mis.data,
   dataError :state.misError.error_data,
   validated:state.mis.data!==null,
-  isvalidated:state.misError.data!==null
+  isvalidated:state.misError.data!==null,
+  token:state.auth.token
 
 }
 }

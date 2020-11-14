@@ -20,17 +20,18 @@ class CustomDropdown extends Component{
     handleUsersPost = (username) =>{
         this.setState({show:true,confirm_value:username});
     }
-    handleConfirm = (username)=>{
+    handleConfirm = (username,id)=>{
         
         /*API*/
 
         switch(this.props.designation){
-            case('ZM'):this.props.putProjectsPC(this.props.token,'1',username)
+            case('ZM'):this.props.putProjectsPC(this.props.token,id,username)
             break;
-            case('PM'):this.props.putProjectsZM(this.props.token,'1',username)
+            case('PM'):this.props.putProjectsZM(this.props.token,id,username)
             break;
             default:;
         }
+        console.log(username);
         
 
 
@@ -58,7 +59,7 @@ class CustomDropdown extends Component{
     render(){
     return(
         <div >
-            <Modal onClick={this.handleClose} show={this.state.show} message="  " confirm="Confirm post to user?" button_message="confirm" button_class="confirm_button" handleButton={()=>this.handleConfirm(this.state.confirm_value)} />
+            <Modal onClick={this.handleClose} show={this.state.show} message="  " confirm="Confirm post to user?" button_message="confirm" button_class="confirm_button" handleButton={()=>this.handleConfirm(this.state.confirm_value,this.props.project_id)} />
            <div className="dropdown">
         <Dropdown>
         <Dropdown.Toggle 

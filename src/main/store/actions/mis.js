@@ -38,6 +38,7 @@ export const misUpload = (token,excel_file) =>{
     let axiosConfig = {
       headers: {
         'Content-Type': 'application/json;charset=UTF-8',
+        'Authorization' : 'Token ' +token 
     }
     };
 
@@ -45,7 +46,7 @@ export const misUpload = (token,excel_file) =>{
       .post("https://mis2020.herokuapp.com/api/mis/excel/",data,axiosConfig
       )
       .then((res) => {
-        console.log("RESPONSE RECEIVED: ", res.data);
+        console.log("RESPONSE RECEIVED: ", res);
         dispatch(misUploadSuccess(res.data.name));
         
       })
@@ -62,6 +63,7 @@ export const misGet = (token) =>{
     let axiosConfig = {
       headers: {
         'Content-Type': 'application/json;charset=UTF-8',
+        'Authorization' : 'Token ' +token 
     }
     };
 

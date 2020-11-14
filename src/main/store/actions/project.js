@@ -25,7 +25,7 @@ export const getProjectDetails = (token,id) =>{
     let axiosConfig = {
       headers: {
         'Content-Type': 'application/json;charset=UTF-8',
-        'Authorization' : 'Bearer ' +token 
+        'Authorization' : 'Token ' +token 
     }
     };
 
@@ -67,13 +67,13 @@ export const putProjectsPC = (token,id,username) =>{
     return dispatch =>{
 
       let data=JSON.stringify({
-        'PC':username
+        'pc':username
       })
         
     let axiosConfig = {
       headers: {
         'Content-Type': 'application/json;charset=UTF-8',
-        'Authorization' : 'Bearer ' +token 
+        'Authorization' : 'Token ' +token 
     }
     };
 
@@ -96,13 +96,13 @@ export const putProjectsZM = (token,id,username) =>{
   return dispatch =>{
 
     let data=JSON.stringify({
-      'ZM':username
+      'zm':username
     })
       
   let axiosConfig = {
     headers: {
       'Content-Type': 'application/json;charset=UTF-8',
-      'Authorization' : 'Bearer ' +token 
+      'Authorization' : 'Token ' +token 
   }
   };
 
@@ -147,6 +147,7 @@ export const getPC = (token) =>{
     let axiosConfig = {
       headers: {
         'Content-Type': 'application/json;charset=UTF-8',
+        'Authorization' : 'Token ' +token 
     }
     };
 
@@ -189,6 +190,7 @@ export const getZM = (token) =>{
     let axiosConfig = {
       headers: {
         'Content-Type': 'application/json;charset=UTF-8',
+        'Authorization' : 'Token ' +token 
     }
     };
 

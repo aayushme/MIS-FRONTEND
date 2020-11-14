@@ -41,7 +41,7 @@ class ProjectDetail extends Component{
            <td>{value.zone}</td>
            <td>{value.state}</td>
            <td>{value.city}</td>
-           <td><CustomDropdown/></td>
+           <td><CustomDropdown project_id={value.id} /></td>
             </tr>
             
           </tbody>

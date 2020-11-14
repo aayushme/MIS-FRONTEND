@@ -23,8 +23,9 @@ export const getCountByCenter = (token) =>{
     return dispatch =>{
         
     let axiosConfig = {
-      headers: {
-        'Content-Type': 'application/json;charset=UTF-8'
+      headers:{
+        'Content-Type': 'application/json;charset=UTF-8',
+        'Authorization' : 'Token '+token 
     }
     };
 
@@ -66,7 +67,8 @@ export const countByInstallationSuccess = (dataT) =>{
           
       let axiosConfig = {
         headers: {
-          'Content-Type': 'application/json;charset=UTF-8'
+          'Content-Type': 'application/json;charset=UTF-8',
+          'Authorization' : 'Token ' +token 
       }
       };
   
@@ -108,7 +110,8 @@ export const countByQCSuccess = (dataT) =>{
           
       let axiosConfig = {
         headers: {
-          'Content-Type': 'application/json;charset=UTF-8'
+          'Content-Type': 'application/json;charset=UTF-8',
+          'Authorization' : 'Token ' +token 
       }
       };
   
@@ -150,7 +153,8 @@ export const getCountByMock = (token) =>{
         
     let axiosConfig = {
       headers: {
-        'Content-Type': 'application/json;charset=UTF-8'
+        'Content-Type': 'application/json;charset=UTF-8',
+        'Authorization' : 'Token ' +token 
     }
     };
 
