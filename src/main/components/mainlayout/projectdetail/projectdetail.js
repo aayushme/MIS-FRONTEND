@@ -14,7 +14,7 @@ class ProjectDetail extends Component{
 
   componentDidMount(){
     switch(this.props.designation){
-      case('ZM'): this.props.getPM(this.props.token);
+      case('ZM'): this.props.getPC(this.props.token);
       break;
       case('PM'):  this.props.getZM(this.props.token);
       break;
@@ -106,7 +106,7 @@ const mapDispatchToProps = dispatch =>{
   return {
     getProjectDetails: (token,id) =>  dispatch(actions.getProjectDetails(token,id)),
     getZM: (token) =>  dispatch(actions.getZM(token)),
-    getPM: (token) => dispatch(actions.getPM(token)),
+    getPC: (token) => dispatch(actions.getPC(token)),
     
   }
 }

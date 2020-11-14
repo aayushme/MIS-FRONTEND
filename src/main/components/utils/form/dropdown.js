@@ -21,7 +21,17 @@ class CustomDropdown extends Component{
         this.setState({show:true,confirm_value:username});
     }
     handleConfirm = (username)=>{
-        console.log(username);
+        
+        /*API*/
+
+        switch(this.props.designation){
+            case('ZM'):this.props.putProjectsPC(this.props.token,'1',username)
+            break;
+            case('PM'):this.props.putProjectsZM(this.props.token,'1',username)
+            break;
+            default:;
+        }
+        
 
 
     }
@@ -31,7 +41,7 @@ class CustomDropdown extends Component{
     renderDropdown = () => {
         let data;
         switch(this.props.designation){
-            case('ZM'):data=this.props.user_data_pm;
+            case('ZM'):data=this.props.user_data_pc;
             break;
             case('PM'):data=this.props.user_data_zm;
             break;
@@ -40,7 +50,6 @@ class CustomDropdown extends Component{
 
         return data.map(value => {
             return (
-              
                 <Dropdown.Item href="#" onClick={()=>this.handleUsersPost(value.user.username)} >{value.user.username}</Dropdown.Item>
             )
         })
@@ -71,14 +80,15 @@ class CustomDropdown extends Component{
 
 const mapDispatchToProps = dispatch =>{
     return {
-      
+        putProjectsPC: (token,id,username) => dispatch(actions.putProjectsPC(token,id,username)),
+        putProjectsZM: (token,id,username) => dispatch(actions.putProjectsZM(token,id,username))
     }
   }
   
   const mapStateToProps = state =>{
       return{
         token : state.auth.token,
-        user_data_pm:state.project.user_data_pm,
+        user_data_pc:state.project.user_data_pc,
         user_data_zm:state.project.user_data_zm,
         designation:state.auth.designation
       }

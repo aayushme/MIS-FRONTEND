@@ -23,5 +23,7 @@ export{
 export{
     getProjectDetails,
     getZM,
-    getPM
+    getPC,
+    putProjectsPC,
+    putProjectsZM
 }from "./project"

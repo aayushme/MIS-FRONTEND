@@ -44,26 +44,104 @@ export const getProjectDetails = (token,id) =>{
     }
 }
 
+/*==============Put Projects================*/ 
 
-/*===============Get Users Of ZM================*/ 
-
-export const getPMSuccess = (dataT) =>{
+export const putProjectsSuccess = (dataT) =>{
   return {
-      type :actionTypes.GET_PM_SUCCESS,
-      user_data_pm:dataT
+      type :actionTypes.PUT_PROJECT_SUCCESS,
+      code:dataT
   }
 }
 
-export const getPMFail = (error) =>{
+export const putProjectsFail = (error) =>{
   return {
-      type : actionTypes.GET_PM_ERROR,
+      type : actionTypes.PUT_PROJECT_ERROR,
       error : error
   }
 }
 
 
 
-export const getPM = (token) =>{
+export const putProjectsPC = (token,id,username) =>{
+
+    return dispatch =>{
+
+      let data=JSON.stringify({
+        'PC':username
+      })
+        
+    let axiosConfig = {
+      headers: {
+        'Content-Type': 'application/json;charset=UTF-8',
+        'Authorization' : 'Bearer ' +token 
+    }
+    };
+
+    axios
+      .patch("https://mis2020.herokuapp.com/api/mis/projects/"+id+"/",data,axiosConfig
+      )
+      .then((res) => {
+        console.log("RESPONSE RECEIVED: ", res);
+        dispatch(putProjectsSuccess(res.data));
+        
+      })
+      .catch((err) => {
+        dispatch(putProjectsFail(err));
+      })
+
+    }
+}
+export const putProjectsZM = (token,id,username) =>{
+
+  return dispatch =>{
+
+    let data=JSON.stringify({
+      'ZM':username
+    })
+      
+  let axiosConfig = {
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8',
+      'Authorization' : 'Bearer ' +token 
+  }
+  };
+
+  axios
+    .patch("https://mis2020.herokuapp.com/api/mis/projects/"+id+"/",data,axiosConfig
+    )
+    .then((res) => {
+      console.log("RESPONSE RECEIVED: ", res);
+      dispatch(putProjectsSuccess(res.data));
+      
+    })
+    .catch((err) => {
+      dispatch(putProjectsFail(err));
+    })
+
+  }
+}
+
+
+
+/*===============Get Users Of ZM================*/ 
+
+export const getPCSuccess = (dataT) =>{
+  return {
+      type :actionTypes.GET_PC_SUCCESS,
+      user_data_pc:dataT
+  }
+}
+
+export const getPCFail = (error) =>{
+  return {
+      type : actionTypes.GET_PC_ERROR,
+      error : error
+  }
+}
+
+
+
+export const getPC = (token) =>{
     return dispatch =>{
         
     let axiosConfig = {
@@ -73,15 +151,15 @@ export const getPM = (token) =>{
     };
 
     axios
-      .get("https://mis2020.herokuapp.com/api/core/all-pm/",axiosConfig
+      .get("https://mis2020.herokuapp.com/api/core/all-pc/",axiosConfig
       )
       .then((res) => {
         console.log("RESPONSE RECEIVED: ", res.data);
-        dispatch(getPMSuccess(res.data));
+        dispatch(getPCSuccess(res.data));
         
       })
       .catch((err) => {
-        dispatch(getPMFail(err));
+        dispatch(getPCFail(err));
       })
 
     }
