@@ -31,7 +31,6 @@ class CustomDropdown extends Component{
             break;
             default:;
         }
-        console.log(username);
         
 
 
@@ -51,7 +50,7 @@ class CustomDropdown extends Component{
 
         return data.map(value => {
             return (
-                <Dropdown.Item href="#" onClick={()=>this.handleUsersPost(value.user.username)} >{value.user.username}</Dropdown.Item>
+                <Dropdown.Item href="#" onClick={()=>this.handleUsersPost(value.id)} >{value.user.username}</Dropdown.Item>
             )
         })
       }

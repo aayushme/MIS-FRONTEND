@@ -19,7 +19,7 @@ export const getProjectDetailsFail = (error) =>{
 
 
 
-export const getProjectDetails = (token,id) =>{
+export const getProjectDetails = (token) =>{
     return dispatch =>{
         
     let axiosConfig = {
@@ -30,7 +30,7 @@ export const getProjectDetails = (token,id) =>{
     };
 
     axios
-      .get("https://mis2020.herokuapp.com/api/mis/projects/?user="+id,axiosConfig
+      .get("https://mis2020.herokuapp.com/api/mis/projects/",axiosConfig
       )
       .then((res) => {
         console.log("RESPONSE RECEIVED: ", res);

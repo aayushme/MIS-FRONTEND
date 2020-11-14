@@ -3,7 +3,6 @@ import Header from '../header/header'
 import Navbar from "../navbar/navbar"
 import {connect} from 'react-redux';
 import {Table} from "react-bootstrap"
-import { Placeholder,Segment } from 'semantic-ui-react'
 import CustomDropdown from "../../utils/form/dropdown"
 import "./project.css"
 import * as actions from "../../../store/actions/index"
@@ -21,7 +20,7 @@ class ProjectDetail extends Component{
       default:
     }
 
-     this.props.getProjectDetails(this.props.token,'1');
+     this.props.getProjectDetails(this.props.token);
 
        
   }
