@@ -64,7 +64,7 @@ class CustomDropdown extends Component{
         <Dropdown.Toggle 
         variant="secondary btn-sm" 
         id="dropdown-basic">
-            Users
+            {this.props.name}
         </Dropdown.Toggle>
 
         <Dropdown.Menu style={{backgroundColor:'#73a47'}}>

@@ -36,11 +36,11 @@ class ProjectDetail extends Component{
             <tr>  
            <td>{value.id}</td>
            <td>{value.code}</td>
-           {this.props.designation==='PC'?<td>{value.zm}</td>:<td>{value.pc}</td>}
+           {this.props.designation==='PM'?<td>{value.zm}</td>:<td>{value.pc}</td>}
            <td>{value.zone}</td>
            <td>{value.state}</td>
            <td>{value.city}</td>
-           <td><CustomDropdown project_id={value.id} /></td>
+           <td><CustomDropdown project_id={value.id} name="Users"/></td>
             </tr>
             
           </tbody>
@@ -73,7 +73,7 @@ render(){
               
               <th>S.No.</th>
               <th>Project Code</th>
-              {this.props.designation==='PC'?<th>ZM</th>:<th>PC</th>}
+              {this.props.designation==='PM'?<th>ZM</th>:<th>PC</th>}
               <th>Zone</th>
               <th>State</th>
               <th>City</th>
