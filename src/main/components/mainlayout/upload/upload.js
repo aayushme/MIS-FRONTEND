@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import Header from '../header/header'
 import Navbar from "../navbar/navbar"
 import Button from "../../utils/form/button"
-import {Table} from "react-bootstrap"
-import Skeleton,{SkeletonTheme} from "react-loading-skeleton"
+import {Table,Spinner} from "react-bootstrap"
 import "./upload.css"
 
 import * as actions from '../../../store/actions/index'
@@ -95,7 +94,7 @@ renderTableError = () => {
 <div className="page-content overflow-hidden" id="content">
 <div className="jumbotron overflow_cont">
   <div className="row">
-    {(this.props.validated)?<div className="col-sm-9 border1">
+    {(this.props.data!==null)?<div className="col-sm-9 border1">
     <Table striped bordered hover>
     <thead>
             <tr>
@@ -110,11 +109,7 @@ renderTableError = () => {
       </Table>
     
 
-    </div>:<div className="col-sm-9 border1"> <SkeletonTheme color="#202020" highlightColor="#444">
-    <section>
-      <Skeleton height={50} width={50} />
-    </section>
-  </SkeletonTheme>
+    </div>:<div className="col-sm-9 border1"> <Spinner animation="grow" />
       </div>}
     
     <div className="col-sm-3 border1"> 
@@ -127,8 +122,8 @@ renderTableError = () => {
 <div><button type="submit" className="btn btn-dark" onClick={this.onThisSubmit}>Save</button></div>
 </div>
   </div>
-  <h4 className="text-center lead">ERROR TABLE</h4>
-  {(this.props.dataError!==[])?<div className="row error_div">
+  
+  {(this.props.dataError!==null)?<div className="row error_div">
   <Table striped bordered hover>
     <thead>
             <tr>
@@ -142,7 +137,7 @@ renderTableError = () => {
 
     {this.renderTableError()}
       </Table>
-  </div>:<div className="row error_div"><Skeleton animation={false}  /></div>}
+  </div>:<div className="row error_div"> <Spinner animation="grow" /></div>}
   
 
   </div>

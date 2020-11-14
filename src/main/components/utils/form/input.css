@@ -34,3 +34,18 @@
 .button:focus {
   background-image: linear-gradient(to right, goldenrod, yellow);
 }
+
+.confirm_button{
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background-image: linear-gradient(to right, #5d4fff, #48b5e8);
+  border: 0;
+  color: #ffffff;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 5px;
+  margin-top:0.5rem
+}

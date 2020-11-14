@@ -3,18 +3,30 @@ import Header from '../header/header'
 import Navbar from "../navbar/navbar"
 import {connect} from 'react-redux';
 import {Table} from "react-bootstrap"
+import { Placeholder,Segment } from 'semantic-ui-react'
 import CustomDropdown from "../../utils/form/dropdown"
 import "./project.css"
 import * as actions from "../../../store/actions/index"
+import {Spinner} from "react-bootstrap"
 
 
 class ProjectDetail extends Component{
 
   componentDidMount(){
-this.props.getProjectDetails(this.props.token,'1');
-this.props.getPM(this.props.token);
-        this.props.getZM(this.props.token);
+    switch(this.props.designation){
+      case('ZM'): this.props.getPM(this.props.token);
+      break;
+      case('PM'):  this.props.getZM(this.props.token);
+      break;
+      default:
+    }
+
+     this.props.getProjectDetails(this.props.token,'1');
+
+       
   }
+
+ 
 
   renderTable = () => {
     return this.props.project_data.map(value => {
@@ -22,8 +34,7 @@ this.props.getPM(this.props.token);
           
           
           <tbody>
-            <tr>
-              
+            <tr>  
            <td>{value.id}</td>
            <td>{value.code}</td>
            <td>{value.pm}</td>
@@ -57,13 +68,13 @@ render(){
 <div class="page-content" id="content">
   <div className="jumbotron overflow-cont">
 <div className="project_table_div">
-<Table striped bordered hover>
+  {(this.props.project_data!==null)?<Table striped bordered hover>
     <thead>
             <tr>
               
               <th>S.No.</th>
               <th>Project Code</th>
-              <th>PM</th>
+              <th>ZM</th>
               <th>Zone</th>
               <th>State</th>
               <th>City</th>
@@ -72,7 +83,8 @@ render(){
           </thead>
           {this.renderTable()}
     
-      </Table>
+  </Table>:<div className="spinner"><Spinner animation="grow" /></div>}
+
     
 
     </div>
@@ -101,7 +113,8 @@ const mapDispatchToProps = dispatch =>{
 const mapStateToProps = state =>{
   return{
     token : state.auth.token, 
-    project_data : state.project.project_data
+    project_data : state.project.project_data,
+    designation:state.auth.designation
   }
 }
 
