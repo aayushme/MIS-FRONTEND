@@ -1,0 +1,76 @@
+.loaderpage{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    z-index: 20000000000000;
+    position: fixed;
+    left: 50%;
+	top: 50%;
+	width: 300vh;
+	height: 300vh;
+    transform: translate(-50%,-50%);
+	background: rgba(0, 0, 0,.5);
+}
+.Box{
+	position:relative;
+    width:100px;
+    z-index:2000!important;
+	height:100px;
+	transform-style:preserve-3d;
+	transform-origin:center;
+	transform:rotate(45deg);
+	animation:Loading 1s linear infinite;
+}
+.Box span{
+	position:absolute;
+    width:50px;
+    z-index:2000!important;
+	height:50px;
+	animation:MyLoading 1s ease-in-out infinite;
+}
+.Box span:first-of-type{
+	left:0px;
+	top:0px;
+    background:rgb(255, 105, 105);
+    z-index:2000!important;
+}
+.Box span:nth-of-type(2){
+	right:0px;
+	top:0px;
+    background: #f0fd77;
+    z-index:2000!important;
+}
+.Box span:nth-of-type(3){
+	left:0px;
+	bottom:0px;
+    background:#9ce12c;
+    z-index:2000!important;
+}
+.Box span:last-of-type{
+	right:0px;
+	bottom:0px;
+    background: #3f51b5;
+    z-index:2000!important;
+}
+
+@keyframes Loading{
+	0%,90% ,100%{
+		width:100px;
+		height:100px;
+	}
+	50%{
+		width:150px;
+		height:150px;	
+	}
+}
+
+
+@keyframes MyLoading{
+	0%{
+		transform:rotate(0deg);
+	}
+	100%{
+		transform:rotate(90deg);
+	}
+}

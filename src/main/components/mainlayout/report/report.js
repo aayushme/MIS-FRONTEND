@@ -1,9 +1,14 @@
-import React from 'react';
+import React,{Component} from 'react';
 import Header from '../header/header'
 import Navbar from "../navbar/navbar"
 
 
-function Report(){
+class Report extends Component{
+
+  
+
+
+  render(){
     return(
         
 <>
@@ -32,6 +37,7 @@ function Report(){
     </div>
     </>
     );
+}
 }
 
 export default Report;
