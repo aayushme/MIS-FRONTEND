@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../header/header';
 import Navbar from '../navbar/navbar';
-import Button from '../../utils/form/button';
 import Modal from '../../utils/modal/modal';
 import { Table } from 'react-bootstrap';
 import './upload.css';
@@ -12,6 +11,8 @@ import * as actions from '../../../store/actions/index';
 import { connect } from 'react-redux';
 
 class Upload extends Component {
+  /*------------------States--------------------*/
+
   state = {
     file: '',
     show: false,
@@ -20,12 +21,13 @@ class Upload extends Component {
   };
 
   componentDidMount() {
+    /*------------------Calling errors in every 8 sec if sheets uploaded--------------------*/
     this.interval = setInterval(() => {
       if (this.props.statusId !== null) {
         this.props.getMisError(this.props.token, this.props.statusId);
         console.log('Getting Errors.....');
       }
-      console.log('5 sec');
+      console.log('10 sec');
     }, 8000);
     this.props.misGet(this.props.token);
   }
@@ -36,10 +38,14 @@ class Upload extends Component {
     }
   }
 
+  /*------------------Handle Modal Close--------------------*/
+
   handleClose = (e) => {
     e.preventDefault();
     this.setState({ show: false, showErrors: false });
   };
+
+  /*------------------Handle Upload Button--------------------*/
 
   onThisSubmit = (e) => {
     if (this.state.file === '') {
@@ -65,30 +71,20 @@ class Upload extends Component {
     }
   };
 
+  /*------------------Handle Error Modal--------------------*/
+
   handleValidationError = (id) => {
     this.setState({ showErrors: true });
   };
+
+  /*------------------Getting Errors--------------------*/
 
   handleError = (id) => {
     this.props.getMisError(this.props.token, id);
     this.setState({ showErrors: true });
   };
 
-  renderTable = () => {
-    return this.props.data.map((value) => {
-      return (
-        <tbody>
-          <tr>
-            <td>{value.id}</td>
-            <td>{value.name}</td>
-            <td value={value.id} onClick={() => this.handleError(value.id)}>
-              <Button value_name='Check' className='error_button' />
-            </td>
-          </tr>
-        </tbody>
-      );
-    });
-  };
+  /*------------------Render Errors Table--------------------*/
 
   renderTableError = () => {
     return this.props.dataError.map((value) => {
@@ -106,16 +102,25 @@ class Upload extends Component {
   };
 
   render() {
+    /*-----------------1) Checking if errors have been fetched
+                        2)If 0 errors then authenticated 
+                        3)If errors then displayed in modal---------------------*/
+
     let errorsTable = this.props.errorDataLoading ? (
+      /*------------------Spinner--------------------*/
       <FullSpinner />
     ) : this.props.dataError.length === 0 ? (
+      /*------------------Authentication Text--------------------*/
       <>
         <p className='lead'>
-          The file is successfully Authenticated{' '}
-          <FontAwesomeIcon style={{ color: 'green' }} icon={faCheckCircle} />
+          <>
+            The file is successfully Authenticated{' '}
+            <FontAwesomeIcon style={{ color: 'green' }} icon={faCheckCircle} />
+          </>
         </p>
       </>
     ) : (
+      /*------------------Render Errors Table--------------------*/
       <div>
         <Table striped bordered hover>
           <thead>
@@ -126,11 +131,12 @@ class Upload extends Component {
               <th>Value</th>
             </tr>
           </thead>
-
           {this.renderTableError()}
         </Table>
       </div>
     );
+
+    /*------------------Return--------------------*/
 
     return (
       <div>
@@ -199,27 +205,6 @@ class Upload extends Component {
               </div>
               <br />
 
-              {this.props.data !== null ? (
-                <div className='row border1'>
-                  <Table striped bordered hover>
-                    <thead>
-                      <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Check Errors</th>
-                      </tr>
-                    </thead>
-
-                    {this.renderTable()}
-                  </Table>
-                </div>
-              ) : (
-                <div className='row border1'>
-                  {' '}
-                  <FullSpinner />
-                </div>
-              )}
-
               {/*    {this.props.dataError !== null ? (
                 <div className='row error_div'>
                   <Table striped bordered hover>
@@ -249,6 +234,8 @@ class Upload extends Component {
   }
 }
 
+/*----------------- REDUX --------------------*/
+
 const mapDispatchToProps = (dispatch) => {
   return {
     misGet: (token) => dispatch(actions.misGet(token)),
@@ -267,6 +254,7 @@ const mapStateToProps = (state) => {
     token: state.auth.token,
     errorvalidated: state.mis.data,
     statusId: state.mis.statusId,
+    loading: state.mis.loading,
   };
 };
 

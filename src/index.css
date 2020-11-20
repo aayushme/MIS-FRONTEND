@@ -5,6 +5,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+html {
+  overflow-y: hidden;
 }
 
 code {
@@ -70,9 +75,9 @@ svg {
   display: block;
 }
 
-body {
+.body {
   font: 16px/1.5 'Lato', sans-serif;
-  
+  overflow-y: hidden;
+  overflow-x: hidden;
+
 }
-
-

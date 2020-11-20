@@ -1,110 +1,107 @@
 import * as actionTypes from '../actions/actionsTypes';
 import { updateObject } from '../utility';
 
-
 const initialState = {
-    project_data:[],
-    error:null,
-    user_data_pc:[],
-    user_data_zm:[],
-    code:[]
+  project_data: [],
+  error: null,
+  user_data_pc: [],
+  user_data_zm: [],
+  code: [],
 };
 
-/*===============Get Projects================*/ 
+/*===============Get Projects================*/
 
 const getProjectDetailsSuccess = (state, action) => {
-
-    return updateObject( state, { 
-        project_data:action.project_data,
-        error: null,
-        loading: false
-     } );
+  return updateObject(state, {
+    project_data: action.project_data,
+    error: null,
+    loading: false,
+  });
 };
 
 const getProjectDetailsFail = (state, action) => {
-    return updateObject( state, {
-        error: action.error,
-        loading: false
-    });
+  return updateObject(state, {
+    error: action.error,
+    loading: false,
+  });
 };
 
-/*===============Get PC Users================*/ 
+/*===============Get PC Users================*/
 
 const getPCSuccess = (state, action) => {
-
-    return updateObject( state, { 
-        user_data_pc:action.user_data_pc,
-        error: null,
-        loading: false
-     } );
+  return updateObject(state, {
+    user_data_pc: action.user_data_pc,
+    error: null,
+    loading: false,
+  });
 };
 
 const getPCFail = (state, action) => {
-    return updateObject( state, {
-        error: action.error,
-        loading: false
-    });
+  return updateObject(state, {
+    error: action.error,
+    loading: false,
+  });
 };
 
-/*===============Get ZM Users================*/ 
+/*===============Get ZM Users================*/
 
 const getZMSuccess = (state, action) => {
-
-    return updateObject( state, { 
-        user_data_zm:action.user_data_zm,
-        error: null,
-        loading: false
-     } );
+  return updateObject(state, {
+    user_data_zm: action.user_data_zm,
+    error: null,
+    loading: false,
+  });
 };
 
 const getZMFail = (state, action) => {
-    return updateObject( state, {
-        error: action.error,
-        loading: false
-    });
+  return updateObject(state, {
+    error: action.error,
+    loading: false,
+  });
 };
 
-/*===============Put Projects================*/ 
+/*===============Put Projects================*/
 
 const putProjectsSuccess = (state, action) => {
-
-    return updateObject( state, { 
-        code:action.code,
-        error: null,
-        loading: false
-     } );
+  return updateObject(state, {
+    code: action.code,
+    error: null,
+    loading: false,
+  });
 };
 
 const putProjectsFail = (state, action) => {
-    return updateObject( state, {
-        error: action.error,
-        loading: false
-    });
+  return updateObject(state, {
+    error: action.error,
+    loading: false,
+  });
 };
 
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case actionTypes.GET_PROJECT_DETAILS_SUCCESS:
+      return getProjectDetailsSuccess(state, action);
+    case actionTypes.GET_PROJECT_DETAILS_ERROR:
+      return getProjectDetailsFail(state, action);
 
+    case actionTypes.PUT_PROJECT_SUCCESS:
+      return putProjectsSuccess(state, action);
+    case actionTypes.PUT_PROJECT_ERROR:
+      return putProjectsFail(state, action);
 
+    case actionTypes.GET_PC_SUCCESS:
+      return getPCSuccess(state, action);
+    case actionTypes.GET_PC_ERROR:
+      return getPCFail(state, action);
 
+    case actionTypes.GET_ZM_SUCCESS:
+      return getZMSuccess(state, action);
+    case actionTypes.GET_ZM_ERROR:
+      return getZMFail(state, action);
 
-const reducer = ( state = initialState, action ) => {
-    switch ( action.type ) {
-       
-       
-        case actionTypes.GET_PROJECT_DETAILS_SUCCESS: return getProjectDetailsSuccess(state, action);
-        case actionTypes.GET_PROJECT_DETAILS_ERROR: return getProjectDetailsFail(state, action);
-
-        case actionTypes.PUT_PROJECT_SUCCESS:return putProjectsSuccess(state,action);
-        case actionTypes.PUT_PROJECT_ERROR:return putProjectsFail(state,action);
-
-        case actionTypes.GET_PC_SUCCESS:return getPCSuccess(state,action);
-        case actionTypes.GET_PC_ERROR:return getPCFail(state,action);
-
-        case actionTypes.GET_ZM_SUCCESS:return getZMSuccess(state,action);
-        case actionTypes.GET_ZM_ERROR:return getZMFail(state,action);
-
-        default:
-            return state;
-    }
+    default:
+      return state;
+  }
 };
 
 export default reducer;

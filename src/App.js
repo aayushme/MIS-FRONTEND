@@ -1,10 +1,11 @@
-import React from "react";
-import AppRouter from "./main/approuter";
-import "./App.css";
+import React from 'react';
+import AppRouter from './main/approuter';
+import './App.css';
+import 'mdbreact/dist/css/mdb.css';
 
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
       <AppRouter />
     </div>
   );
