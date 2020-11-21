@@ -11,7 +11,7 @@
 }
 
 .login_form {
-  padding: 45px;
+  padding: 50px;
 }
 
 .login_image {
@@ -25,10 +25,11 @@
   position: relative;
   z-index: 1;
   background: #ffffff;
-  max-width: 580px;
+  max-width: 590px;
   margin: 15px auto 20px;
   text-align: center;
   border-radius: 25px;
+  padding-right: 12px;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 

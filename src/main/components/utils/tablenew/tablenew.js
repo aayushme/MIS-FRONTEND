@@ -6,12 +6,12 @@ const TableNew = (props) => {
     <div>
       <MDBDataTableV5
         hover
-        entriesOptions={[5, 20, 25]}
+        entriesOptions={[5]}
         entries={props.entries}
         pagesAmount={props.pageamount}
         data={props.tabledata}
-        searchTop
-        searchBottom={false}
+        searchBottom
+        searchTop={false}
         checkbox
         headCheckboxID='id2'
         bodyCheckboxID='checkboxes2'

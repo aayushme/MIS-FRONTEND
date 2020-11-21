@@ -8,7 +8,18 @@ import FullSpinner from '../../utils/fullspinner/fullspinner';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import * as actions from '../../../store/actions/index';
+import 'mdbreact/dist/css/mdb.css';
 import { connect } from 'react-redux';
+import TableNew from '../../utils/tablenew/tablenew';
+import {
+  MDBContainer,
+  MDBTabPane,
+  MDBTabContent,
+  MDBNav,
+  MDBNavItem,
+  MDBNavLink,
+  MDBBtn,
+} from 'mdbreact';
 
 class Upload extends Component {
   /*------------------States--------------------*/
@@ -18,6 +29,139 @@ class Upload extends Component {
     show: false,
     uploadClass: 'file-upload',
     showErrors: false,
+    activeItem: '3',
+    activeItemJustified: '1',
+    tabledata: {
+      columns: [
+        {
+          label: 'S.No.',
+          field: 'SNo',
+          width: 150,
+          attributes: {
+            'aria-controls': 'DataTable',
+            'aria-label': 'S.No.',
+          },
+        },
+        {
+          label: 'Project Code',
+          field: 'ProjectCode',
+          width: 270,
+        },
+        {
+          label: 'ZM',
+          field: 'Zone',
+          width: 200,
+        },
+        {
+          label: 'Age',
+          field: 'age',
+          sort: 'asc',
+          width: 100,
+        },
+        {
+          label: 'Start date',
+          field: 'date',
+          sort: 'disabled',
+          width: 150,
+        },
+        {
+          label: 'Salary',
+          field: 'salary',
+          sort: 'disabled',
+          width: 100,
+        },
+      ],
+      rows: [
+        {
+          SNo: 'Tiger Nixon',
+          ProjectCode: 'System Architect',
+          ZM: 'Edinburgh',
+          age: '61',
+          date: '2011/04/25',
+          salary: '$320',
+        },
+        {
+          SNo: 'Tiger Nixon',
+          ProjectCode: 'System Architect',
+          ZM: 'Edinburgh',
+          age: '61',
+          date: '2011/04/25',
+          salary: '$320',
+        },
+        {
+          SNo: 'Tiger Nixon',
+          ProjectCode: 'System Architect',
+          ZM: 'Edinburgh',
+          age: '61',
+          date: '2011/04/25',
+          salary: '$320',
+        },
+        {
+          SNo: 'Tiger Nixon',
+          ProjectCode: 'System Architect',
+          ZM: 'Edinburgh',
+          age: '61',
+          date: '2011/04/25',
+          salary: '$320',
+        },
+        {
+          SNo: 'Tiger Nixon',
+          ProjectCode: 'System Architect',
+          ZM: 'Edinburgh',
+          age: '61',
+          date: '2011/04/25',
+          salary: '$320',
+        },
+        {
+          SNo: 'Tiger Nixon',
+          ProjectCode: 'System Architect',
+          ZM: 'Edinburgh',
+          age: '61',
+          date: '2011/04/25',
+          salary: '$320',
+        },
+        {
+          SNo: 'Tiger Nixon',
+          ProjectCode: 'System Architect',
+          ZM: 'Edinburgh',
+          age: '61',
+          date: '2011/04/25',
+          salary: '$320',
+        },
+        {
+          SNo: 'Tiger Nixon',
+          ProjectCode: 'System Architect',
+          ZM: 'Edinburgh',
+          age: '61',
+          date: '2011/04/25',
+          salary: '$320',
+        },
+        {
+          SNo: 'Tiger Nixon',
+          ProjectCode: 'System Architect',
+          ZM: 'Edinburgh',
+          age: '61',
+          date: '2011/04/25',
+          salary: '$320',
+        },
+        {
+          SNo: 'Tiger Nixon',
+          ProjectCode: 'System Architect',
+          ZM: 'Edinburgh',
+          age: '61',
+          date: '2011/04/25',
+          salary: '$320',
+        },
+        {
+          SNo: 'Tiger Nixon',
+          ProjectCode: 'System Architect',
+          ZM: 'Edinburgh',
+          age: '61',
+          date: '2011/04/25',
+          salary: '$320',
+        },
+      ],
+    },
   };
 
   componentDidMount() {
@@ -37,6 +181,22 @@ class Upload extends Component {
       clearInterval(this.interval);
     }
   }
+
+  toggleClassicTabs1 = (tab) => (e) => {
+    if (this.state.activeItemJustified !== tab) {
+      this.setState({
+        activeItemJustified: tab,
+      });
+    }
+  };
+
+  toggle = (tab) => (e) => {
+    if (this.state.activeItem !== tab) {
+      this.setState({
+        activeItem: tab,
+      });
+    }
+  };
 
   /*------------------Handle Modal Close--------------------*/
 
@@ -160,52 +320,229 @@ class Upload extends Component {
             errors={errorsTable}
           />
 
-          <div className='page-content overflow-hidden' id='content'>
-            <div className='jumbotron overflow_cont'>
-              <div className='row border1'>
-                <div className='col-sm-5'>
-                  <div class={this.state.uploadClass}>
-                    <div class='file-select'>
-                      <div class='file-select-button' id='fileName'>
-                        Choose File
+          <div className='page-content overflow-hidden' id='content1'>
+            <div className='overflow_cont1'>
+              <MDBContainer className='tabs_cont1'>
+                <MDBNav color='secondary' dark expand='md'>
+                  <MDBNavItem>
+                    <MDBNavLink
+                      className='link_tabs'
+                      link
+                      to='#'
+                      active={this.state.activeItemJustified === '1'}
+                      onClick={this.toggleClassicTabs1('1')}
+                    >
+                      Add New Project
+                    </MDBNavLink>
+                  </MDBNavItem>
+                  <MDBNavItem>
+                    <MDBNavLink
+                      className='link_tabs'
+                      link
+                      to='#'
+                      active={this.state.activeItemJustified === '2'}
+                      onClick={this.toggleClassicTabs1('2')}
+                    >
+                      Modify Existing Project
+                    </MDBNavLink>
+                  </MDBNavItem>
+                </MDBNav>
+                <MDBTabContent
+                  className='card'
+                  activeItem={this.state.activeItemJustified}
+                >
+                  <MDBTabPane tabId='1' role='tabpanel' className='noshadow'>
+                    <div className='row border1'>
+                      <div className='upload_input'>
+                        <div class={this.state.uploadClass}>
+                          <div class='file-select'>
+                            <div class='file-select-button' id='fileName'>
+                              Choose File
+                            </div>
+
+                            {this.state.file !== '' ? (
+                              <div class='file-select-name' id='noFile'>
+                                {this.state.file.name}
+                              </div>
+                            ) : (
+                              <div class='file-select-name' id='noFile'>
+                                No file chosen...
+                              </div>
+                            )}
+
+                            <form>
+                              <input
+                                type='file'
+                                class='form-control-file'
+                                id='exampleFormControlFile1'
+                                onChange={(e) =>
+                                  this.setState({ file: e.target.files[0] })
+                                }
+                              />
+                            </form>
+                          </div>
+                        </div>
                       </div>
-
-                      {this.state.file !== '' ? (
-                        <div class='file-select-name' id='noFile'>
-                          {this.state.file.name}
-                        </div>
-                      ) : (
-                        <div class='file-select-name' id='noFile'>
-                          No file chosen...
-                        </div>
-                      )}
-
-                      <form>
-                        <input
-                          type='file'
-                          class='form-control-file'
-                          id='exampleFormControlFile1'
-                          onChange={(e) =>
-                            this.setState({ file: e.target.files[0] })
-                          }
-                        />
-                      </form>
+                      <div className='upload_div'>
+                        <MDBBtn
+                          color='primary'
+                          outline
+                          rounded
+                          onClick={this.onThisSubmit}
+                        >
+                          Upload
+                        </MDBBtn>
+                      </div>
                     </div>
-                  </div>
-                </div>
-                <div className='col-sm-7'>
-                  <button
-                    type='submit'
-                    className='btn btn-dark'
-                    onClick={this.onThisSubmit}
-                  >
-                    Upload
-                  </button>
-                </div>
-              </div>
-              <br />
+                  </MDBTabPane>
+                  <MDBTabPane tabId='2' role='tabpanel'>
+                    <div className='row border2'>
+                      <MDBContainer>
+                        <MDBNav className='nav-tabs mt-5'>
+                          <MDBNavItem>
+                            <MDBNavLink
+                              link
+                              to='#'
+                              active={this.state.activeItem === '3'}
+                              onClick={this.toggle('3')}
+                              role='tab'
+                            >
+                              Update New Sheets
+                            </MDBNavLink>
+                          </MDBNavItem>
+                          <MDBNavItem>
+                            <MDBNavLink
+                              link
+                              to='#'
+                              active={this.state.activeItem === '4'}
+                              onClick={this.toggle('4')}
+                              role='tab'
+                            >
+                              Add New Centers
+                            </MDBNavLink>
+                          </MDBNavItem>
+                          <MDBNavItem>
+                            <MDBNavLink
+                              link
+                              to='#'
+                              active={this.state.activeItem === '5'}
+                              onClick={this.toggle('5')}
+                              role='tab'
+                            >
+                              Remove Centers
+                            </MDBNavLink>
+                          </MDBNavItem>
+                        </MDBNav>
+                        <MDBTabContent activeItem={this.state.activeItem}>
+                          <MDBTabPane tabId='3' role='tabpanel'>
+                            <div className='upload_input1'>
+                              <div class={this.state.uploadClass}>
+                                <div class='file-select'>
+                                  <div class='file-select-button' id='fileName'>
+                                    Choose File
+                                  </div>
 
-              {/*    {this.props.dataError !== null ? (
+                                  {this.state.file !== '' ? (
+                                    <div class='file-select-name' id='noFile'>
+                                      {this.state.file.name}
+                                    </div>
+                                  ) : (
+                                    <div class='file-select-name' id='noFile'>
+                                      No file chosen...
+                                    </div>
+                                  )}
+
+                                  <form>
+                                    <input
+                                      type='file'
+                                      class='form-control-file'
+                                      id='exampleFormControlFile1'
+                                      onChange={(e) =>
+                                        this.setState({
+                                          file: e.target.files[0],
+                                        })
+                                      }
+                                    />
+                                  </form>
+                                </div>
+                              </div>
+                            </div>
+                            <div className='upload_div1'>
+                              <MDBBtn
+                                color='primary'
+                                outline
+                                rounded
+                                onClick={this.onThisSubmit}
+                              >
+                                Upload
+                              </MDBBtn>
+                            </div>
+                          </MDBTabPane>
+                          <MDBTabPane tabId='4' role='tabpanel'>
+                            <div className='upload_input1'>
+                              <div class={this.state.uploadClass}>
+                                <div class='file-select'>
+                                  <div class='file-select-button' id='fileName'>
+                                    Choose File
+                                  </div>
+
+                                  {this.state.file !== '' ? (
+                                    <div class='file-select-name' id='noFile'>
+                                      {this.state.file.name}
+                                    </div>
+                                  ) : (
+                                    <div class='file-select-name' id='noFile'>
+                                      No file chosen...
+                                    </div>
+                                  )}
+
+                                  <form>
+                                    <input
+                                      type='file'
+                                      class='form-control-file'
+                                      id='exampleFormControlFile1'
+                                      onChange={(e) =>
+                                        this.setState({
+                                          file: e.target.files[0],
+                                        })
+                                      }
+                                    />
+                                  </form>
+                                </div>
+                              </div>
+                            </div>
+                            <div className='upload_div1'>
+                              <MDBBtn
+                                color='primary'
+                                outline
+                                rounded
+                                onClick={this.onThisSubmit}
+                              >
+                                Upload
+                              </MDBBtn>
+                            </div>
+                          </MDBTabPane>
+                          <MDBTabPane tabId='5' role='tabpanel'>
+                            <div className='delete_table'>
+                              {' '}
+                              <TableNew
+                                entries='5'
+                                pageamount='10'
+                                tabledata={this.state.tabledata}
+                              />
+                            </div>
+                          </MDBTabPane>
+                        </MDBTabContent>
+                      </MDBContainer>
+                    </div>
+                  </MDBTabPane>
+                </MDBTabContent>
+              </MDBContainer>
+            </div>
+
+            <br />
+
+            {/*    {this.props.dataError !== null ? (
                 <div className='row error_div'>
                   <Table striped bordered hover>
                     <thead>
@@ -226,7 +563,6 @@ class Upload extends Component {
                   <Spinner />
                 </div>
               )} */}
-            </div>
           </div>
         </div>
       </div>

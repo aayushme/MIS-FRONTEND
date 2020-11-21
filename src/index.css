@@ -20,6 +20,7 @@ code {
 /* RESET RULES
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700&display=swap');
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css");
 
 :root {
   --page-header-bgColor: #242e42;
