@@ -47,7 +47,6 @@ const List = (props) => {
     <div>
       <li className='nav-item active'>
         <Link to={props.to} class='nav-link text-dark fonts_are'>
-          <i class='fa fa-th-large mr-3 text-primary fa-fw'></i>
           <FontAwesomeIcon className='icons_nav' icon={iconName} />
           {props.link_name}
         </Link>
