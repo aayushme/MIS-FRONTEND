@@ -1,20 +1,17 @@
-import { MDBDataTableV5 } from 'mdbreact';
 import React from 'react';
+import ReactFlexyTable from 'react-flexy-table';
+import 'react-flexy-table/dist/index.css';
+import './tablenew.css';
 
 const TableNew = (props) => {
   return (
     <div>
-      <MDBDataTableV5
-        hover
-        entriesOptions={[5]}
-        entries={props.entries}
-        pagesAmount={props.pageamount}
-        data={props.tabledata}
-        searchBottom
-        searchTop={false}
-        checkbox
-        headCheckboxID='id2'
-        bodyCheckboxID='checkboxes2'
+      <ReactFlexyTable
+        pageSizeOptions={[5]}
+        className='my-table'
+        data={props.tableData}
+        filterable
+        additionalCols={props.additionalCols}
       />
     </div>
   );

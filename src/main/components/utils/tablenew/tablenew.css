@@ -1,0 +1,27 @@
+.my-table tr {
+    color: rgb(34, 34, 34);
+    font-weight: bold;
+}
+
+._1OmBB thead th:hover {
+    background-color: #3f51b5;
+    color: white;
+    cursor: pointer;
+    transition: .3s;
+}
+
+._1OmBB tbody tr:hover {
+    transition: 0.3s;
+    cursor: pointer;
+    color: #3f51b5 !important;
+}
+
+:root {
+    --rft-main-color: #3f51b5;
+    --rft-button-color: #3f51b5;
+    --rft-even-row-color: #f3f3f3;
+}
+
+:root:hover {
+    --rft-main-color: #3f51b5;
+}

@@ -23,10 +23,12 @@ class Dashboard extends Component {
   componentDidMount() {
     /*=========Calling all graphs=======*/
     this.setState({ show: true });
+    this.props.misGet(this.props.token);
     this.props.getCountByCenter(this.props.token);
     this.props.getCountByInstallation(this.props.token);
     this.props.getCountByQC(this.props.token);
     this.props.getCountByMock(this.props.token);
+    this.props.getProjectDetails(this.props.token);
   }
 
   toggle = () => {
@@ -161,134 +163,6 @@ class Dashboard extends Component {
                   <br />
                   <br />
                   <br />
-                  <div className='row'>
-                    <div className='col-sm-6'>
-                      <MDBCard>
-                        <MDBCardImage
-                          className='blue-gradient white-text d-flex justify-content-center align-items-center flex-column p-4 rounded'
-                          tag='div'
-                        >
-                          <h2>Count By Center Type</h2>
-                        </MDBCardImage>
-                        <MDBCardBody cascade className='text-center'>
-                          <Graphs jsonData={this.props.count_by_center_data} />
-                        </MDBCardBody>
-                      </MDBCard>
-                    </div>
-
-                    <div className='col-sm-6'>
-                      <MDBCard>
-                        <MDBCardImage
-                          className='blue-gradient white-text d-flex justify-content-center align-items-center flex-column p-4 rounded'
-                          tag='div'
-                        >
-                          <h2>Count By Mock Status</h2>
-                        </MDBCardImage>
-                        <MDBCardBody cascade className='text-center'>
-                          <Graphs jsonData={this.props.count_by_mock_data} />
-                        </MDBCardBody>
-                      </MDBCard>
-                    </div>
-                  </div>
-                  <br />
-                  <br />
-                  <br />
-                  <div className='row'>
-                    <div className='col-sm-6'>
-                      <MDBCard>
-                        <MDBCardImage
-                          className='blue-gradient white-text d-flex justify-content-center align-items-center flex-column p-4 rounded'
-                          tag='div'
-                        >
-                          <h2>Count By Center Type</h2>
-                        </MDBCardImage>
-                        <MDBCardBody cascade className='text-center'>
-                          <Graphs jsonData={this.props.count_by_center_data} />
-                        </MDBCardBody>
-                      </MDBCard>
-                    </div>
-
-                    <div className='col-sm-6'>
-                      <MDBCard>
-                        <MDBCardImage
-                          className='blue-gradient white-text d-flex justify-content-center align-items-center flex-column p-4 rounded'
-                          tag='div'
-                        >
-                          <h2>Count By Mock Status</h2>
-                        </MDBCardImage>
-                        <MDBCardBody cascade className='text-center'>
-                          <Graphs jsonData={this.props.count_by_mock_data} />
-                        </MDBCardBody>
-                      </MDBCard>
-                    </div>
-                  </div>
-                  <br />
-                  <br />
-                  <br />
-                  <div className='row'>
-                    <div className='col-sm-6'>
-                      <MDBCard>
-                        <MDBCardImage
-                          className='blue-gradient white-text d-flex justify-content-center align-items-center flex-column p-4 rounded'
-                          tag='div'
-                        >
-                          <h2>Count By Center Type</h2>
-                        </MDBCardImage>
-                        <MDBCardBody cascade className='text-center'>
-                          <Graphs jsonData={this.props.count_by_center_data} />
-                        </MDBCardBody>
-                      </MDBCard>
-                    </div>
-
-                    <div className='col-sm-6'>
-                      <MDBCard>
-                        <MDBCardImage
-                          className='blue-gradient white-text d-flex justify-content-center align-items-center flex-column p-4 rounded'
-                          tag='div'
-                        >
-                          <h2>Count By Mock Status</h2>
-                        </MDBCardImage>
-                        <MDBCardBody cascade className='text-center'>
-                          <Graphs jsonData={this.props.count_by_mock_data} />
-                        </MDBCardBody>
-                      </MDBCard>
-                    </div>
-                  </div>
-                  <br />
-                  <br />
-                  <br />
-                  <div className='row'>
-                    <div className='col-sm-6'>
-                      <MDBCard>
-                        <MDBCardImage
-                          className='blue-gradient white-text d-flex justify-content-center align-items-center flex-column p-4 rounded'
-                          tag='div'
-                        >
-                          <h2>Count By Center Type</h2>
-                        </MDBCardImage>
-                        <MDBCardBody cascade className='text-center'>
-                          <Graphs jsonData={this.props.count_by_center_data} />
-                        </MDBCardBody>
-                      </MDBCard>
-                    </div>
-
-                    <div className='col-sm-6'>
-                      <MDBCard>
-                        <MDBCardImage
-                          className='blue-gradient white-text d-flex justify-content-center align-items-center flex-column p-4 rounded'
-                          tag='div'
-                        >
-                          <h2>Count By Mock Status</h2>
-                        </MDBCardImage>
-                        <MDBCardBody cascade className='text-center'>
-                          <Graphs jsonData={this.props.count_by_mock_data} />
-                        </MDBCardBody>
-                      </MDBCard>
-                    </div>
-                  </div>
-                  <br />
-                  <br />
-                  <br />
                 </div>
               </Jumbotron>
             </div>
@@ -306,6 +180,9 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(actions.getCountByInstallation(token)),
     getCountByQC: (token) => dispatch(actions.getCountByQC(token)),
     getCountByMock: (token) => dispatch(actions.getCountByMock(token)),
+    misGet: (token) => dispatch(actions.misGet(token)),
+    getProjectDetails: (token, id) =>
+      dispatch(actions.getProjectDetails(token, id)),
   };
 };
 
