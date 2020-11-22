@@ -25,6 +25,9 @@ export const authFail = (error) => {
 
 export const logout = () => {
   localStorage.removeItem('token');
+  localStorage.removeItem('cookies');
+  localStorage.removeItem('full_name');
+  localStorage.removeItem('designation');
   return {
     type: actionTypes.AUTH_LOGOUT,
   };
@@ -55,6 +58,7 @@ export const auth = (user_name, pwd) => {
         localStorage.setItem('token', res.data.token);
         localStorage.setItem('designation', res.data.designation);
         localStorage.setItem('full_name', res.data.full_name);
+        localStorage.setItem('cookies', 'no');
         dispatch(
           authSuccess(res.data.token, res.data.designation, res.data.full_name)
         );

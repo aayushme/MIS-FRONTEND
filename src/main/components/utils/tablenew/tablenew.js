@@ -7,7 +7,7 @@ const TableNew = (props) => {
   return (
     <div>
       <ReactFlexyTable
-        pageSizeOptions={[5]}
+        pageSizeOptions={[4]}
         className='my-table'
         data={props.tableData}
         filterable

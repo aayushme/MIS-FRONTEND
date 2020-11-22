@@ -46,7 +46,7 @@ const List = (props) => {
   return (
     <div>
       <li className='nav-item active'>
-        <Link to={props.to} class='nav-link text-dark fonts_are'>
+        <Link to={props.to} class='nav-link text-black-50 fonts_are'>
           <FontAwesomeIcon className='icons_nav' icon={iconName} />
           {props.link_name}
         </Link>

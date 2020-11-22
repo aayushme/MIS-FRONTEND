@@ -11,6 +11,7 @@ import misReducer from './main/store/reducers/mis';
 import misErrorReducer from './main/store/reducers/miserror';
 import graphReducer from './main/store/reducers/graph';
 import projectReducer from './main/store/reducers/project';
+import centerReducer from './main/store/reducers/centers';
 
 const composeEnhancers =
   process.env.NODE_ENV === 'development'
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   misError: misErrorReducer,
   graph: graphReducer,
   project: projectReducer,
+  center: centerReducer,
 });
 
 const store = createStore(

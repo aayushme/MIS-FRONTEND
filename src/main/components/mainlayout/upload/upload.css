@@ -119,8 +119,11 @@
 }
 
 .delete_table {
-    padding: 20px;
+    padding: 5px;
     margin-left: 1rem;
+    overflow-y: scroll;
+    height: 28rem;
+    overflow-x: auto;
 }
 
 

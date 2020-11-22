@@ -16,15 +16,16 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 class AppRouter extends Component {
   componentDidMount() {
     this.props.authCheckStatus();
+    this.props.authCenterStatus();
   }
 
   render() {
     let final_route;
-
     if (this.props.isAuthenticated) {
       final_route = (
         <Switch>
           <div className='AppRouter'>
+            {this.props.getCenters(this.props.token)}
             <Route path='/' exact component={Login} />
             <Route path='/main/dashboard' exact component={Dashboard} />
             <Route path='/main/upload' exact component={Upload} />
@@ -62,12 +63,15 @@ class AppRouter extends Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     authCheckStatus: () => dispatch(actions.authCheckStatus()),
+    getCenters: (token) => dispatch(actions.getCenters(token)),
+    authCenterStatus: () => dispatch(actions.authCenterStatus()),
   };
 };
 
 const mapStateToProps = (state) => {
   return {
     isAuthenticated: state.auth.token !== null,
+    token: state.auth.token,
   };
 };
 

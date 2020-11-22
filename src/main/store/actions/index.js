@@ -18,3 +18,5 @@ export {
   putProjectsPC,
   putProjectsZM,
 } from './project';
+
+export { getCenters, deleteCenters, authCenterStatus } from './centers';
