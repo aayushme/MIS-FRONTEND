@@ -24,17 +24,29 @@ import {
 class Upload extends Component {
   /*------------------States--------------------*/
 
-  state = {
-    file: '',
-    show: false,
-    uploadClass: 'file-upload',
-    showErrors: false,
-    activeItem: '3',
-    activeItemJustified: '1',
-    showDeleteStatus: false,
-    showDeleteStatusText: 'Processing....',
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+      errorInfo: null,
+      file: '',
+      show: false,
+      uploadClass: 'file-upload',
+      showErrors: false,
+      activeItem: '3',
+      activeItemJustified: '1',
+    };
+  }
 
+  componentDidCatch(error, errorInfo) {
+    // Catch errors in any components below and re-render with error message
+    this.setState({
+      error: error,
+      errorInfo: errorInfo,
+    });
+    console.log('Add1' + this.state.errorInfo);
+    // You can also log error messages to an error reporting service here
+  }
   additionalCols = () => [
     {
       header: 'Actions',
@@ -55,17 +67,13 @@ class Upload extends Component {
 
   handleDeleteCenters = (id) => {
     this.props.deleteCenters(this.props.token, id);
-    this.setState({ showDeleteStatus: true });
-    this.handleDeleteCentersStatus();
+    this.handleUpdateColumns();
   };
 
-  handleDeleteCentersStatus = () => {
+  handleUpdateColumns = () => {
     this.interval = setInterval(() => {
-      if (this.props.deleteCenterStatus === true) {
-        this.setState({ showDeleteStatusText: 'Successfully Deleted' });
-        window.location = '/main/dashboard';
-      }
-    }, 4000);
+      this.props.getCenters(this.props.token);
+    }, 1000);
   };
 
   componentDidMount() {
@@ -202,6 +210,10 @@ class Upload extends Component {
       </div>
     );
 
+    if (this.state.error !== null) {
+      window.location('/main/dashboard');
+    }
+
     /*------------------Return--------------------*/
 
     return (
@@ -216,11 +228,6 @@ class Upload extends Component {
           <Modal
             show={this.state.show}
             message='Please Upload a Valid Excel File '
-            onClick={this.handleClose}
-          />
-          <Modal
-            show={this.state.showDeleteStatus}
-            message={this.state.showDeleteStatusText}
             onClick={this.handleClose}
           />
 
@@ -487,6 +494,7 @@ const mapDispatchToProps = (dispatch) => {
     misUpload: (token, file) => dispatch(actions.misUpload(token, file)),
     getMisError: (token, id) => dispatch(actions.getMisError(token, id)),
     deleteCenters: (token, id) => dispatch(actions.deleteCenters(token, id)),
+    getCenters: (token) => dispatch(actions.getCenters(token)),
   };
 };
 

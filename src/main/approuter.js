@@ -7,6 +7,7 @@ import DisputedCenters from './components/mainlayout/disputedcenter/disputedcent
 import Mock from './components/mainlayout/mockstatus/mockstatus';
 import New from './components/mainlayout/newallocations/newallocations';
 import ProjectDetails from './components/mainlayout/projectdetail/projectdetail';
+import NotFound from './components/utils/notfound/notfound';
 import './components/mainlayout/main.css';
 import { connect } from 'react-redux';
 import * as actions from './store/actions/index';
@@ -42,6 +43,7 @@ class AppRouter extends Component {
               exact
               component={ProjectDetails}
             />
+            <Route component={NotFound} />
           </div>
         </Switch>
       );
