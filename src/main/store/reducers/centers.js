@@ -5,19 +5,21 @@ const initialState = {
   center_data: [],
   error: null,
   loading: true,
+  loading_center: true,
 };
 
 const getCenterSuccess = (state, action) => {
   return updateObject(state, {
     center_data: action.center_data,
     error: false,
+    loading_center: action.loading,
   });
 };
 
 const getCenterFail = (state, action) => {
   return updateObject(state, {
-    error: action.error,
-    loading: false,
+    error_center: action.error,
+    loading_center: action.loading,
   });
 };
 

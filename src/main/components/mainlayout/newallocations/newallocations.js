@@ -5,29 +5,18 @@ import Dropdown from '../../utils/form/dropdown';
 import { connect } from 'react-redux';
 import { Table } from 'react-bootstrap';
 import * as actions from '../../../store/actions/index';
+import MultiDrop from '../../utils/form/multidrop';
+import {
+  MDBBtn,
+  MDBCard,
+  MDBCardBody,
+  MDBCardImage,
+  MDBCardTitle,
+  MDBCardText,
+  MDBCol,
+} from 'mdbreact';
 
 class NewAllocations extends Component {
-  renderTable = () => {
-    return this.props.project_data.map((value) => {
-      return (
-        <tbody>
-          <tr>
-            <td>{value.id}</td>
-            <td>{value.code}</td>
-            {this.props.designation === 'PM' ? (
-              <td>{value.zm}</td>
-            ) : (
-              <td>{value.pc}</td>
-            )}
-            <td>{value.zone}</td>
-            <td>{value.state}</td>
-            <td>{value.city}</td>
-          </tr>
-        </tbody>
-      );
-    });
-  };
-
   render() {
     return (
       <>
@@ -43,35 +32,34 @@ class NewAllocations extends Component {
             <div className='jumbotron overflow-cont'>
               <div className='project_table_div'>
                 <div className='row'>
-                  <div className='col-sm-2'>
-                    <Dropdown name='Zone' />
-                  </div>
-                  <div className='col-sm-2'>
-                    <Dropdown name='ZM' />
+                  <div className='col-sm-4 dropdowns'>
+                    <div className='row dropdowns'>
+                      <MDBCard style={{ width: '22rem' }}>
+                        <MDBCardBody>
+                          <MDBCardTitle>Zone Manager</MDBCardTitle>
+                          <Dropdown name='ZM' />
+                        </MDBCardBody>
+                      </MDBCard>
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+
+                    <div className='row dropdowns'>
+                      <MDBCard style={{ width: '22rem' }}>
+                        <MDBCardBody>
+                          <MDBCardTitle>Zones</MDBCardTitle>
+                          <MultiDrop />
+                        </MDBCardBody>
+                      </MDBCard>
+                    </div>
                   </div>
                   <div className='col-sm-8'></div>
                 </div>
                 <br />
                 <br />
-                <div>
-                  <Table striped bordered hover>
-                    <thead>
-                      <tr>
-                        <th>S.No.</th>
-                        <th>Project Code</th>
-                        {this.props.designation === 'PM' ? (
-                          <th>ZM</th>
-                        ) : (
-                          <th>PC</th>
-                        )}
-                        <th>Zone</th>
-                        <th>State</th>
-                        <th>City</th>
-                      </tr>
-                    </thead>
-                    {this.renderTable()}
-                  </Table>
-                </div>
+                <div></div>
               </div>
             </div>
           </div>

@@ -17,7 +17,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 class AppRouter extends Component {
   componentDidMount() {
     this.props.authCheckStatus();
-    this.props.authCenterStatus();
   }
 
   render() {
@@ -66,7 +65,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     authCheckStatus: () => dispatch(actions.authCheckStatus()),
     getCenters: (token) => dispatch(actions.getCenters(token)),
-    authCenterStatus: () => dispatch(actions.authCenterStatus()),
   };
 };
 

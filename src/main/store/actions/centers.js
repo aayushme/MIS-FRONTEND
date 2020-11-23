@@ -15,6 +15,7 @@ export const getCentersFail = (error) => {
   return {
     type: actionTypes.GET_CENTERS_ERROR,
     error: error,
+    loading: true,
   };
 };
 
@@ -38,16 +39,6 @@ export const getCenters = (token) => {
       .catch((err) => {
         dispatch(getCentersFail(err));
       });
-  };
-};
-
-export const authCenterStatus = () => {
-  return (dispatch) => {
-    const data = localStorage.getItem('centerdata');
-
-    if (data) {
-      dispatch(getCentersSuccess(data));
-    }
   };
 };
 

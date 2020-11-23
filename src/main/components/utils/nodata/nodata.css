@@ -1,0 +1,29 @@
+path {
+    animation: rotate 1s infinite;
+}
+
+path:nth-of-type(2) {
+    animation-delay: .2s;
+}
+
+@keyframes rotate {
+    from {
+        stroke-dasharray: 5;
+        stroke-dashoffset: 7.3;
+    }
+
+    to {
+        stroke-dasharray: 5;
+        stroke-dashoffset: 17.3;
+    }
+}
+
+.nodata {
+    background-color: black;
+    height: 60vh;
+    display: grid;
+    color: white;
+    place-content: center;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+}
