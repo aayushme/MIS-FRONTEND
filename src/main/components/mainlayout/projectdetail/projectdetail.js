@@ -6,7 +6,6 @@ import { Table } from 'react-bootstrap';
 import CustomDropdown from '../../utils/form/dropdown';
 import './project.css';
 import * as actions from '../../../store/actions/index';
-import { Spinner } from 'react-bootstrap';
 import TableNew from '../../utils/tablenew/tablenew';
 
 class ProjectDetail extends Component {
@@ -74,7 +73,6 @@ class ProjectDetail extends Component {
         break;
       default:
     }
-
     this.props.getProjectDetails(this.props.token);
   }
 
@@ -153,6 +151,7 @@ class ProjectDetail extends Component {
     );
   }
 }
+
 const mapDispatchToProps = (dispatch) => {
   return {
     getProjectDetails: (token, id) =>
@@ -161,6 +160,7 @@ const mapDispatchToProps = (dispatch) => {
     getPC: (token) => dispatch(actions.getPC(token)),
   };
 };
+
 const mapStateToProps = (state) => {
   return {
     token: state.auth.token,

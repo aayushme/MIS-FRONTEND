@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../header/header';
 import Navbar from '../navbar/navbar';
+import Success from '../../utils/modal/success';
 
 class Report extends Component {
   render() {
@@ -15,7 +16,9 @@ class Report extends Component {
           </div>
 
           <div class='page-content' id='content'>
-            <div className='jumbotron overflow-cont'></div>
+            <div className='jumbotron overflow-cont'>
+              <Success success_message='Successfully Uploaded' />
+            </div>
           </div>
         </div>
       </>

@@ -21,7 +21,6 @@ export const misUpload = (token, excel_file) => {
   return (dispatch) => {
     const data = new FormData();
     data.append('file', excel_file);
-    console.log(excel_file);
     let axiosConfig = {
       headers: {
         'Content-Type': 'application/json;charset=UTF-8',

@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { MDBBtn } from 'mdbreact';
 import Modal from '../../utils/modal/modal';
 import FullSpinner from '../../utils/fullspinner/fullspinner';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckCircle, faTrash } from '@fortawesome/free-solid-svg-icons';
 import * as actions from '../../../store/actions/index';
 import { connect } from 'react-redux';
 import { Table } from 'react-bootstrap';
+import Success from '../../utils/modal/success';
 
 class UploadNew extends Component {
   constructor(props) {
@@ -18,16 +17,7 @@ class UploadNew extends Component {
       showErrors: false,
     };
   }
-  componentDidMount() {
-    /*------------------Calling errors in every 8 sec if sheets uploaded--------------------*/
-    this.interval = setInterval(() => {
-      if (this.props.statusId !== null) {
-        this.props.getMisError(this.props.token, this.props.statusId);
-        console.log('Getting Errors.....');
-      }
-      console.log('10 sec');
-    }, 8000);
-  }
+
   /*------------------Handle Error Modal--------------------*/
 
   handleValidationError = (id) => {
@@ -39,6 +29,15 @@ class UploadNew extends Component {
   handleError = (id) => {
     this.props.getMisError(this.props.token, id);
     this.setState({ showErrors: true });
+  };
+
+  handleErrorsIn = () => {
+    this.interval = setInterval(() => {
+      if (this.props.statusId !== null) {
+        this.props.getMisError(this.props.token, this.props.statusId);
+      }
+      console.log('Aayush');
+    }, 7000);
   };
 
   /*------------------Render Errors Table--------------------*/
@@ -86,6 +85,7 @@ class UploadNew extends Component {
       e.preventDefault();
       if (bCondition01 || bCondition02) {
         this.props.misUpload(this.props.token, this.state.file);
+        this.handleErrorsIn();
         this.setState({ uploadClass: 'file-upload active', showErrors: true });
       } else {
         this.setState({ show: true, uploadClass: 'file-upload danger' });
@@ -102,13 +102,9 @@ class UploadNew extends Component {
       <FullSpinner />
     ) : this.props.dataError.length === 0 ? (
       /*------------------Authentication Text--------------------*/
+
       <>
-        <p className='lead'>
-          <>
-            The file is successfully Authenticated{' '}
-            <FontAwesomeIcon style={{ color: 'green' }} icon={faCheckCircle} />
-          </>
-        </p>
+        <Success success_message='Successfully Uploaded' />
       </>
     ) : (
       /*------------------Render Errors Table--------------------*/

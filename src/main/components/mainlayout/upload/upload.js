@@ -3,7 +3,7 @@ import Header from '../header/header';
 import Navbar from '../navbar/navbar';
 import './upload.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash, faQuestion } from '@fortawesome/free-solid-svg-icons';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import * as actions from '../../../store/actions/index';
 import 'mdbreact/dist/css/mdb.css';
 import { connect } from 'react-redux';
@@ -22,14 +22,12 @@ import {
 class Upload extends Component {
   /*------------------States--------------------*/
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      show: false,
-      activeItem: '3',
-      activeItemJustified: '1',
-    };
-  }
+  state = {
+    show: false,
+    activeItem: '3',
+    activeItemJustified: '1',
+    delete_table: null,
+  };
 
   additionalCols = () => [
     {
@@ -42,7 +40,7 @@ class Upload extends Component {
               width='30'
               height='20'
               onClick={() => this.handleDeleteCenters(data.id)}
-            />{' '}
+            />
           </div>
         );
       },
@@ -57,7 +55,14 @@ class Upload extends Component {
   handleUpdateColumns = () => {
     this.interval = setInterval(() => {
       {
-        window.location.assign('/main/upload');
+        this.setState({
+          delete_table: (
+            <TableNew
+              tableData={this.props.center_data}
+              additionalCols={this.additionalCols()}
+            />
+          ),
+        });
       }
     }, 1000);
   };
@@ -189,15 +194,23 @@ class Upload extends Component {
                             <div className='delete_table scrollbar scrollbar-primary'>
                               {this.props.loading_center === false ? (
                                 this.props.error_center !== '' ? (
-                                  <TableNew
-                                    tableData={this.props.center_data}
-                                    additionalCols={this.additionalCols()}
-                                  />
+                                  <>
+                                    {' '}
+                                    {this.state.delete_table !== null ? (
+                                      <TableNew
+                                        tableData={this.props.center_data}
+                                        additionalCols={this.additionalCols()}
+                                        pageSize={[4]}
+                                      />
+                                    ) : (
+                                      <>{this.state.delete_table}</>
+                                    )}{' '}
+                                  </>
                                 ) : (
                                   <NoData />
                                 )
                               ) : (
-                                <>Loading.....</>
+                                <NoData />
                               )}
                             </div>
                           </MDBTabPane>

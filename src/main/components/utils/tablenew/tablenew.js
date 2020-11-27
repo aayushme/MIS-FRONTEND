@@ -5,15 +5,27 @@ import './tablenew.css';
 
 const TableNew = (props) => {
   return (
-    <div>
-      <ReactFlexyTable
-        pageSizeOptions={[4]}
-        className='my-table'
-        data={props.tableData}
-        filterable
-        additionalCols={props.additionalCols}
-      />
-    </div>
+    <>
+      {props.additionalCols === 'NO' ? (
+        <div>
+          <ReactFlexyTable
+            pageSizeOptions={props.pageSize}
+            className='my-table'
+            data={props.tableData}
+          />
+        </div>
+      ) : (
+        <div>
+          <ReactFlexyTable
+            pageSizeOptions={props.pageSize}
+            className='my-table'
+            data={props.tableData}
+            filterable
+            additionalCols={props.additionalCols}
+          />
+        </div>
+      )}
+    </>
   );
 };
 

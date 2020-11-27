@@ -184,3 +184,49 @@ export const getZM = (token) => {
       });
   };
 };
+
+/*===============Get Users To Projects Zone Wise================*/
+
+export const postZoneWiseSuccess = (dataT) => {
+  return {
+    type: actionTypes.GET_ZM_SUCCESS,
+    user_data_zm: dataT,
+  };
+};
+
+export const postZoneWiseFail = (error) => {
+  return {
+    type: actionTypes.GET_ZM_ERROR,
+    error: error,
+  };
+};
+
+export const postZoneWise = (token, zone, zm) => {
+  return (dispatch) => {
+    let axiosConfig = {
+      headers: {
+        'Content-Type': 'application/json;charset=UTF-8',
+        Authorization: 'Token ' + token,
+      },
+    };
+
+    let data = JSON.stringify({
+      zone: zone,
+      zm: zm,
+    });
+
+    axios
+      .post(
+        'http://mis2020.herokuapp.com/api/mis/allot-pc-city-wise/',
+        data,
+        axiosConfig
+      )
+      .then((res) => {
+        console.log('RESPONSE RECEIVED: ', res);
+        dispatch(postZoneWiseSuccess(res.data));
+      })
+      .catch((err) => {
+        dispatch(postZoneWiseFail(err));
+      });
+  };
+};

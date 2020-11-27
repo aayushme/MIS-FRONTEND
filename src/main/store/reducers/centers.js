@@ -6,6 +6,7 @@ const initialState = {
   error: null,
   loading: true,
   loading_center: true,
+  error_center: '',
 };
 
 const getCenterSuccess = (state, action) => {

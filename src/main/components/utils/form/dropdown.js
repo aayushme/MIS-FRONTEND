@@ -11,6 +11,18 @@ class CustomDropdown extends Component {
     confirm_value: null,
   };
 
+  componentDidMount() {
+    switch (this.props.designation) {
+      case 'ZM':
+        this.props.getPC(this.props.token);
+        break;
+      case 'PM':
+        this.props.getZM(this.props.token);
+        break;
+      default:
+    }
+  }
+
   handleClose = (e) => {
     e.preventDefault();
     this.setState({ show: false });
@@ -91,6 +103,8 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(actions.putProjectsPC(token, id, username)),
     putProjectsZM: (token, id, username) =>
       dispatch(actions.putProjectsZM(token, id, username)),
+    getZM: (token) => dispatch(actions.getZM(token)),
+    getPC: (token) => dispatch(actions.getPC(token)),
   };
 };
 

@@ -1,5 +1,19 @@
 .dropdowns {
-    padding: 30px;
+    padding: 40px;
     margin-top: -2rem;
-    margin-left: 2rem;
+    margin-left: 0rem;
+    border: 0.5px solid rgb(180, 180, 180);
+    background-color: white;
+    border-radius: 10px;
+}
+
+.dropdowns2 {
+    padding: 10px;
+    margin-left: 0rem;
+    margin-top: -2rem;
+    border: 0.5px solid rgb(180, 180, 180);
+    background-color: white;
+    border-radius: 10px;
+    height: 84vh;
+    overflow-y: auto;
 }
