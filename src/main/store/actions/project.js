@@ -185,18 +185,18 @@ export const getZM = (token) => {
   };
 };
 
-/*===============Get Users To Projects Zone Wise================*/
+/*===============Post Users To Projects Zone Wise================*/
 
 export const postZoneWiseSuccess = (dataT) => {
   return {
-    type: actionTypes.GET_ZM_SUCCESS,
+    type: actionTypes.POST_PROJECT_ZONE_WISE_SUCCESS,
     user_data_zm: dataT,
   };
 };
 
 export const postZoneWiseFail = (error) => {
   return {
-    type: actionTypes.GET_ZM_ERROR,
+    type: actionTypes.POST_PROJECT_ZONE_WISE_ERROR,
     error: error,
   };
 };

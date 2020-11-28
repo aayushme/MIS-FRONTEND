@@ -7,6 +7,7 @@ const initialState = {
   user_data_pc: [],
   user_data_zm: [],
   code: [],
+  postinfo: null,
 };
 
 /*===============Get Projects================*/
@@ -77,6 +78,23 @@ const putProjectsFail = (state, action) => {
   });
 };
 
+/*===============Post Projects Zone Wise================*/
+
+const postZoneWiseSuccess = (state, action) => {
+  return updateObject(state, {
+    postinfo: action.info,
+    error: null,
+    loading: false,
+  });
+};
+
+const postZoneWiseFail = (state, action) => {
+  return updateObject(state, {
+    error: action.error,
+    loading: false,
+  });
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.GET_PROJECT_DETAILS_SUCCESS:
@@ -98,6 +116,11 @@ const reducer = (state = initialState, action) => {
       return getZMSuccess(state, action);
     case actionTypes.GET_ZM_ERROR:
       return getZMFail(state, action);
+
+    case actionTypes.POST_PROJECT_ZONE_WISE_SUCCESS:
+      return postZoneWiseSuccess(state, action);
+    case actionTypes.POST_PROJECT_ZONE_WISE_ERROR:
+      return postZoneWiseFail(state, action);
 
     default:
       return state;

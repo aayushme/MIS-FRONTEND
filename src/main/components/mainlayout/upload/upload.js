@@ -193,10 +193,10 @@ class Upload extends Component {
                           <MDBTabPane tabId='3' role='tabpanel'>
                             <div className='delete_table scrollbar scrollbar-primary'>
                               {this.props.loading_center === false ? (
-                                this.props.error_center !== '' ? (
+                                this.props.error_center === '' ? (
                                   <>
                                     {' '}
-                                    {this.state.delete_table !== null ? (
+                                    {this.state.delete_table === null ? (
                                       <TableNew
                                         tableData={this.props.center_data}
                                         additionalCols={this.additionalCols()}

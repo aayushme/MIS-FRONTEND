@@ -32,7 +32,7 @@ export const getCenters = (token) => {
     axios
       .get('https://mis2020.herokuapp.com/api/centre/centres/', axiosConfig)
       .then((res) => {
-        console.log('RESPONSE RECEIVED: ', res);
+        console.log('Center Data: ', res);
         localStorage.setItem('centerdata', res.data);
         dispatch(getCentersSuccess(res.data));
       })

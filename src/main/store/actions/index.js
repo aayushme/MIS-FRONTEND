@@ -17,6 +17,7 @@ export {
   getPC,
   putProjectsPC,
   putProjectsZM,
+  postZoneWise,
 } from './project';
 
 export { getCenters, deleteCenters } from './centers';

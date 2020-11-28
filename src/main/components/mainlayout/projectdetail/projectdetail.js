@@ -2,11 +2,8 @@ import React, { Component } from 'react';
 import Header from '../header/header';
 import Navbar from '../navbar/navbar';
 import { connect } from 'react-redux';
-import { Table } from 'react-bootstrap';
-import CustomDropdown from '../../utils/form/dropdown';
 import './project.css';
 import * as actions from '../../../store/actions/index';
-import TableNew from '../../utils/tablenew/tablenew';
 
 class ProjectDetail extends Component {
   render() {
