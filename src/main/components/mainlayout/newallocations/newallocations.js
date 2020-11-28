@@ -5,86 +5,12 @@ import Dropdown from '../../utils/form/dropdown';
 import { connect } from 'react-redux';
 import './newallocations.css';
 import * as actions from '../../../store/actions/index';
-import TableNew from '../../utils/tablenew/tablenew';
+import TableAllocations from './tableallocations';
 import MultiDrop from '../../utils/form/multidrop';
 
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardTitle } from 'mdbreact';
 
 class NewAllocations extends Component {
-  state = {
-    table: [
-      {
-        id: '1',
-        name: 'aayush',
-        age: '5',
-      },
-      {
-        id: '1',
-        name: 'aayush',
-        age: '5',
-      },
-      {
-        id: '1',
-        name: 'aayush',
-        age: '5',
-      },
-      {
-        id: '1',
-        name: 'aayush',
-        age: '5',
-      },
-      {
-        id: '1',
-        name: 'aayush',
-        age: '5',
-      },
-      {
-        id: '1',
-        name: 'aayush',
-        age: '5',
-      },
-      {
-        id: '1',
-        name: 'aayush',
-        age: '5',
-      },
-      {
-        id: '1',
-        name: 'aayush',
-        age: '5',
-      },
-      {
-        id: '1',
-        name: 'aayush',
-        age: '5',
-      },
-      {
-        id: '1',
-        name: 'aayush',
-        age: '5',
-      },
-      {
-        id: '1',
-        name: 'aayush',
-        age: '5',
-      },
-      {
-        id: '1',
-        name: 'aayush',
-        age: '5',
-      },
-      {
-        id: '1',
-        name: 'aayush',
-        age: '5',
-      },
-      {
-        id: '1',
-        name: 'aayush',
-        age: '5',
-      },
-    ],
-  };
   render() {
     return (
       <>
@@ -131,12 +57,8 @@ class NewAllocations extends Component {
                     </div>
                   </div>
                   <div className='col-sm-8'>
-                    <div className='dropdowns2'>
-                      <TableNew
-                        tableData={this.state.table}
-                        additionalCols='NO'
-                        pageSize={[5, 10]}
-                      />
+                    <div className='dropdowns2 scrollbar scrollbar-primary'>
+                      <TableAllocations />
                     </div>
                   </div>
                 </div>
