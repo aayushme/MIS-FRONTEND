@@ -2,11 +2,11 @@ import * as actionTypes from '../actions/actionsTypes';
 import { updateObject } from '../utility';
 
 const initialState = {
-  center_data: [],
+  center_data: null,
   error: null,
   loading: true,
   loading_center: true,
-  error_center: '',
+  error_center: '0',
 };
 
 const getCenterSuccess = (state, action) => {

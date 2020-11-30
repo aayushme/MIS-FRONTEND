@@ -29,6 +29,8 @@ class Upload extends Component {
     delete_table: null,
   };
 
+  /*------------------Additional Cols Table--------------------*/
+
   additionalCols = () => [
     {
       header: 'Actions',
@@ -47,6 +49,8 @@ class Upload extends Component {
     },
   ];
 
+  /*------------------Handle Delete--------------------*/
+
   handleDeleteCenters = (id) => {
     this.props.deleteCenters(this.props.token, id);
     this.handleUpdateColumns();
@@ -55,25 +59,31 @@ class Upload extends Component {
   handleUpdateColumns = () => {
     this.interval = setInterval(() => {
       {
+        this.props.getCenters(this.props.token);
+        this.handleUpdateColumns2();
+      }
+    }, 3000);
+  };
+
+  /*------------------Refresh Table After Delete--------------------*/
+
+  handleUpdateColumns2 = () => {
+    this.interval = setInterval(() => {
+      {
         this.setState({
           delete_table: (
             <TableNew
               tableData={this.props.center_data}
               additionalCols={this.additionalCols()}
+              pageSize={[4]}
             />
           ),
         });
+        console.log(this.state.delete_table);
       }
-    }, 1000);
+    }, 4000);
   };
-
-  componentDidMount() {}
-
-  componentWillUnmount() {
-    if (this.props.errorDataLoading === false) {
-      clearInterval(this.interval);
-    }
-  }
+  /*------------------Sections--------------------*/
 
   toggleClassicTabs1 = (tab) => (e) => {
     if (this.state.activeItemJustified !== tab) {
@@ -193,7 +203,7 @@ class Upload extends Component {
                           <MDBTabPane tabId='3' role='tabpanel'>
                             <div className='delete_table scrollbar scrollbar-primary'>
                               {this.props.loading_center === false ? (
-                                this.props.error_center === '' ? (
+                                this.props.center_data.length !== 0 ? (
                                   <>
                                     {' '}
                                     {this.state.delete_table === null ? (
@@ -203,7 +213,7 @@ class Upload extends Component {
                                         pageSize={[4]}
                                       />
                                     ) : (
-                                      <>{this.state.delete_table}</>
+                                      <>{this.props.delete_table}</>
                                     )}{' '}
                                   </>
                                 ) : (
